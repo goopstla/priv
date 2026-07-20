@@ -84,19 +84,19 @@ local IgnoreIds = {
     135786259766600, 85001245127842, 180436148, 78483712198400,
     83121686204649, 124533795581666, 82609577177900, 91518905988764,
     76421770436225, 126705724590194, 16488456076, 125750702,
-    136383835228005,
+    136383835228005, 133701766307335, 16488472267,
 }
 
 
 
 local ParriedAnimation = {
-"rbxassetid://76534283932072", 
+"rbxassetid://110012089736043", 
 }
 
 
-local StunnedAnimation = {"rbxassetid://PARRYANIM", "rbxassetid://PARRYANIM", "rbxassetid://PARRYANIM"}
-local ParryingAnimation = {"rbxassetid://PARRYANIM"}
-local ParryFailed = {"rbxassetid://PARRYANIM"} -- BlockHit
+local StunnedAnimation = {"rbxassetid://18144001283", "rbxassetid://90588955029387", "rbxassetid://114860432034250"}
+local ParryingAnimation = {""}
+local ParryFailed = {""} -- BlockHit
 
 
 local AutoParryRange = 10
