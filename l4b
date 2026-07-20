@@ -23,23 +23,50 @@ local AnimationsLoggedOrder = {}
 -- Game Configuration
 -- ==========================================
 
-local GameName = "Chungus"
+local GameName = "L4B"
 
 local GameConfig = {
-    ["Fist"] = {
-        ["rbxassetid://102618178276029"] = {
+    ["Charger"] = {
+        ["rbxassetid://137076097396856"] = {
             DisplayName = "A1",
-            ParryTime = 0.2
+            ParryTime = 0
         },
-        ["rbxassetid://72280629002769"] = {
+	["M1Time"] = 0
+      },
+
+    ["Jockey"] = {
+        ["rbxassetid://132275181942224"] = {
+            DisplayName = "A1",
+            ParryTime = 0
+        },
+	["M1Time"] = 0
+      },
+
+    ["Hunter"] = {
+        ["rbxassetid://127571478614797"] = {
+            DisplayName = "A1",
+            ParryTime = 0
+        },
+	["M1Time"] = 0
+      },
+    ["Witch"] = {
+        ["rbxassetid://117823145278009"] = {
+            DisplayName = "A1",
+            ParryTime = 0
+        },
+        ["rbxassetid://127864541303318"] = {
             DisplayName = "A2",
-            ParryTime = 0.2
+            ParryTime = 0
         },
-}
+	["M1Time"] = 0
+      },
 }
 
 local IgnoreIds = {
-135608169304887,106557753799942
+135608169304887, 106557753799942, 88523543424857, 117262508086231, 96686282341971, 107088088855572, 135383345332150, 115264254327269, 99389794981797, 103343121412651, 127846426380736, 
+93309566829006, 81770792253773, 78366529814754, 135238849860785, 97499264417745, 72615525487620, 133882345120871, 97465837234788,104494487121275, 106855949531773, 89767423896542,
+82167472886659, 103869482201753, 109375494515868, 133536658202000, 74124784698022, 135786259766600, 85001245127842, 180436148, 78483712198400, 83121686204649, 124533795581666,
+82609577177900, 
 }
 
 
@@ -1208,17 +1235,6 @@ local function UpdateAnimationRegistry(animKey, anim, now, currentTrackTime, att
     
     local regData = AnimationRegistry[animKey]
     
-    if regData.CurrentTrackTime and (currentTrackTime < regData.CurrentTrackTime) then
-        local BlockStart, BlockExpire = CalculateParryTiming(attackConfig, now - currentTrackTime)
-        
-        regData.Processed = false
-        regData.DidALoop = true
-        warn("Loop detected")
-        regData.BlockStart = BlockStart
-        regData.BlockExpire = BlockExpire
-        regData.StartTime = now - currentTrackTime
-    end
-    
     regData.CurrentClockTime = os.clock()
     regData.CurrentTrackTime = currentTrackTime
 
@@ -1568,6 +1584,5 @@ local function MainLoop()
         ProcessEspAndLogging()
     end
 end
-
 RunService.RenderStepped:Connect(MainLoop)
 --RunService.Heartbeat:Connect(MainLoop)
