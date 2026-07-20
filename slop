@@ -28,50 +28,85 @@ local GameName = "Chungus"
 local GameConfig = {
     ["Fist"] = {
         ["rbxassetid://102618178276029"] = {
-            DisplayName = "Attack_1",
+            DisplayName = "A1",
             ParryTime = 0.2
         },
         ["rbxassetid://72280629002769"] = {
-            DisplayName = "Attack_2",
+            DisplayName = "A2",
             ParryTime = 0.2
         },
         ["rbxassetid://105008254213661"] = {
-            DisplayName = "Attack_3",
+            DisplayName = "A3",
             ParryTime = 0.2
         },
         ["M1Time"] = 0.15
     },
-
-    ["Knife"] = {
-        ["rbxassetid://102618178276029"] = {
-            DisplayName = "Attack_1",
-            ParryTime = 0.1
+	["Knife"] = {
+        ["rbxassetid://76534283932072"] = {
+            DisplayName = "A1",
+            ParryTime = 0.06
         },
-        ["rbxassetid://72280629002769"] = {
-            DisplayName = "Attack_2",
-            ParryTime = 0.1
+        ["rbxassetid://74133871844034"] = {
+            DisplayName = "A2",
+            ParryTime = 0.06
         },
-        ["rbxassetid://105008254213661"] = {
-            DisplayName = "Attack_3",
-            ParryTime = 0.1
+        ["M1Time"] = 0.06
+    },
+	["Machete"] = {
+        ["rbxassetid://116494707369328"] = {
+            DisplayName = "A1",
+            ParryTime = 0.2
         },
-        ["M1Time"] = 0.1
+        ["rbxassetid://107351618263003"] = {
+            DisplayName = "A2",
+            ParryTime = 0.2
+        },
+        ["M1Time"] = 0.2
+    },
+	["Bat"] = {
+        ["rbxassetid://80228626271628"] = {
+            DisplayName = "A1",
+            ParryTime = 0.32
+        },
+        ["rbxassetid://124686184424621"] = {
+            DisplayName = "A2",
+            ParryTime = 0.32
+        },
+        ["M1Time"] = 0.32
+    },
+	["Katana"] = {
+        ["rbxassetid://130955446788281"] = {
+            DisplayName = "A1",
+            ParryTime = 0.17
+        },
+        ["rbxassetid://96537761974620"] = {
+            DisplayName = "A2",
+            ParryTime = 0.17
+        },
+        ["M1Time"] = 0.17
+    },
+	["Axe"] = {
+        ["rbxassetid://115211597922469"] = {
+            DisplayName = "A1",
+            ParryTime = 0.60
+        },
+        ["M1Time"] = 0.60
     },
 }
 
 local IgnoreIds = {
-132693863024689
+132693863024689, 102618178276029, 128162808234116, 78901588945786, 89589746086146, 103521470247415, 106480017583063
 }
 
 
 local ParriedAnimation = {
-"rbxassetid://135115675058598", 
+"rbxassetid://76534283932072", 
 }
 
 
-local StunnedAnimation = {"rbxassetid://9598562590", "rbxassetid://9598537410", "rbxassetid://9598551746"}
-local ParryingAnimation = {"rbxassetid://118147060185189"}
-local ParryFailed = {"rbxassetid://4210597123"} -- BlockHit
+local StunnedAnimation = {"rbxassetid://PARRYANIM", "rbxassetid://PARRYANIM", "rbxassetid://PARRYANIM"}
+local ParryingAnimation = {"rbxassetid://PARRYANIM"}
+local ParryFailed = {"rbxassetid://PARRYANIM"} -- BlockHit
 
 
 local AutoParryRange = 10
