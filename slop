@@ -23,79 +23,29 @@ local AnimationsLoggedOrder = {}
 -- Game Configuration
 -- ==========================================
 
-local GameName = "Chungus"
+local GameName = "L4B"
 
 local GameConfig = {
-    ["Fist"] = {
-        ["rbxassetid://102618178276029"] = {
+    ["Charger"] = {
+        ["rbxassetid://137076097396856"] = {
             DisplayName = "A1",
-            ParryTime = 0.2
+            ParryTime = 0
         },
-        ["rbxassetid://72280629002769"] = {
-            DisplayName = "A2",
-            ParryTime = 0.2
-        },
-        ["rbxassetid://105008254213661"] = {
-            DisplayName = "A3",
-            ParryTime = 0.2
-        },
-        ["M1Time"] = 0.15
-    },
-	["Knife"] = {
-        ["rbxassetid://76534283932072"] = {
+	["M1Time"] = 0
+      },
+
+    ["Charger"] = {
+        ["rbxassetid://137076097396856"] = {
             DisplayName = "A1",
-            ParryTime = 0.06
+            ParryTime = 0
         },
-        ["rbxassetid://74133871844034"] = {
-            DisplayName = "A2",
-            ParryTime = 0.06
-        },
-        ["M1Time"] = 0.06
-    },
-	["Machete"] = {
-        ["rbxassetid://116494707369328"] = {
-            DisplayName = "A1",
-            ParryTime = 0.2
-        },
-        ["rbxassetid://107351618263003"] = {
-            DisplayName = "A2",
-            ParryTime = 0.2
-        },
-        ["M1Time"] = 0.2
-    },
-	["Bat"] = {
-        ["rbxassetid://80228626271628"] = {
-            DisplayName = "A1",
-            ParryTime = 0.32
-        },
-        ["rbxassetid://124686184424621"] = {
-            DisplayName = "A2",
-            ParryTime = 0.32
-        },
-        ["M1Time"] = 0.32
-    },
-	["Katana"] = {
-        ["rbxassetid://130955446788281"] = {
-            DisplayName = "A1",
-            ParryTime = 0.17
-        },
-        ["rbxassetid://96537761974620"] = {
-            DisplayName = "A2",
-            ParryTime = 0.17
-        },
-        ["M1Time"] = 0.17
-    },
-	["Axe"] = {
-        ["rbxassetid://115211597922469"] = {
-            DisplayName = "A1",
-            ParryTime = 0.60
-        },
-        ["M1Time"] = 0.60
-    },
+	["M1Time"] = 0
+      },
+
 }
 
 local IgnoreIds = {
-132693863024689, 102618178276029, 128162808234116, 78901588945786, 89589746086146, 103521470247415, 106480017583063
+135608169304887,106557753799942, 88523543424857,117262508086231,96686282341971, 107088088855572,135383345332150, 115264254327269,99389794981797, 103343121412651,
 }
 
 
@@ -144,27 +94,54 @@ GameConfig = FlattenedConfig
 
 local AnimationIdSliders = {}
 
+local function GetFolderFromPath(pathString)
+    if not pathString or pathString == "" then return nil end
+    
+    local current = game.Workspace
+    local parts = string.split(pathString, "/")
+    
+    for _, part in ipairs(parts) do
+        current = current:FindFirstChild(part)
+        if not current then return nil end
+    end
+    
+    return current
+end
+
 local function GetAllFoldersInWorkspace()
     local Folders = {}
 
-    for _, Folder in game.Workspace:GetChildren() do  
-        if Folder.ClassName == "Folder" then
-            table.insert(Folders, Folder.Name)
+    local function Scan(parent, prefix)
+        for _, child in ipairs(parent:GetChildren()) do
+            if child.ClassName == "Folder" then
+                local fullPath = prefix == "" and child.Name or (prefix .. "/" .. child.Name)
+                table.insert(Folders, fullPath)
+                -- Recursively scan up to 2 levels deep
+                if #string.split(fullPath, "/") < 3 then
+                    Scan(child, fullPath)
+                end
+            end
         end
     end
 
+    Scan(game.Workspace, "")
     return Folders
 end
 
 local function GetAllCharactersInFolder()
-    if not SelectedFolder or not game.Workspace:FindFirstChild(SelectedFolder) then UI_Library:Notify("ERROR", "Select a folder first") return end 
-    
+    if not SelectedFolder then 
+        UI_Library:Notify("ERROR", "Select a folder first") 
+        return {} 
+    end 
+
+    local TargetFolder = GetFolderFromPath(SelectedFolder)
+    if not TargetFolder then 
+        UI_Library:Notify("ERROR", "Folder path not found: " .. tostring(SelectedFolder)) 
+        return {} 
+    end 
 
     local Characters = {}
-    local SelectedFolder = game.Workspace[SelectedFolder]
-
-
-    for _, Character in SelectedFolder:GetChildren() do  
+    for _, Character in ipairs(TargetFolder:GetChildren()) do  
         if Character.ClassName == "Model" and Character:FindFirstChildWhichIsA("Humanoid") then
             if not IncludeLocalCharacter then 
                 if Character.Address == game.Players.LocalPlayer.Character.Address then continue end 
@@ -375,22 +352,26 @@ local function CreateFoldersSection()
     end)
     Range:Set(MaxCycleRange)
 
-
     local IncludeLocalCharacterToggle = Folders_Section:Toggle("Include Local Character", false, function(on)
         IncludeLocalCharacter = on
         UpdateTargetPoolSection()   
     end)
 
     local FolderCombo = Folders_Section:Dropdown("Live Folder", nil, folders, false, function(list)
-        local Selected = list[1]
-        SelectedFolder = Selected
-        UpdateTargetPoolSection(Tab)
+        SelectedFolder = list[1]
+        UpdateTargetPoolSection()
     end)
 
-    if game.Workspace:FindFirstChild("Players") then  
+    -- Auto-detect default folder paths
+    if game.Workspace:FindFirstChild("Players") and game.Workspace.Players:FindFirstChild("Killers") then
+        FolderCombo:Set({"Players/Killers"})
+        SelectedFolder = "Players/Killers"
+    elseif game.Workspace:FindFirstChild("Players") then  
         FolderCombo:Set({"Players"})
+        SelectedFolder = "Players"
     elseif game.Workspace:FindFirstChild("Live") then 
         FolderCombo:Set({"Live"})
+        SelectedFolder = "Live"
     end
 
     print("[UI] Folders Section Created")
@@ -655,7 +636,7 @@ end
 -- Configs 
 -- ==========================================
 
-local ParryKey = string.byte("F")
+local ParryKey = string.byte("G")
 local DodgeKey = string.byte("Q")
 
 local KeyHeld = false
@@ -1233,17 +1214,6 @@ local function UpdateAnimationRegistry(animKey, anim, now, currentTrackTime, att
     
     local regData = AnimationRegistry[animKey]
     
-    if regData.CurrentTrackTime and (currentTrackTime < regData.CurrentTrackTime) then
-        local BlockStart, BlockExpire = CalculateParryTiming(attackConfig, now - currentTrackTime)
-        
-        regData.Processed = false
-        regData.DidALoop = true
-        warn("Loop detected")
-        regData.BlockStart = BlockStart
-        regData.BlockExpire = BlockExpire
-        regData.StartTime = now - currentTrackTime
-    end
-    
     regData.CurrentClockTime = os.clock()
     regData.CurrentTrackTime = currentTrackTime
 
@@ -1593,6 +1563,5 @@ local function MainLoop()
         ProcessEspAndLogging()
     end
 end
-
 RunService.RenderStepped:Connect(MainLoop)
 --RunService.Heartbeat:Connect(MainLoop)
