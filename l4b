@@ -594,7 +594,7 @@ CreateClipboardSection()
 
 -- ==========================================
 local PARRY_DISTANCE = 15 
-local PARRY_COOLDOWN = 0.1
+local PARRY_COOLDOWN = 1
 
 local activeOrbs = {}
 local lastParryAt = 0
