@@ -23,7 +23,7 @@ local AnimationsLoggedOrder = {}
 -- Game Configuration
 -- ==========================================
 
-local GameName = "L4B"
+local GameName = "Csaw"
 
 local GameConfig = {
     ["Spear"] = {
@@ -357,12 +357,691 @@ local GameConfig = {
 	["M1Time"] = 0.01
       },
     
-      
+    ["NewViolence"] = {
+        ["rbxassetid://76942016300976"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://98513877206484"] = {
+            DisplayName = "A2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://119259610838360"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://122573862231291"] = {
+            DisplayName = "A4",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://72120299538507"] = {
+            DisplayName = "A5",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://135443513898404"] = {
+            DisplayName = "Barrage",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://12006085636"] = {
+            DisplayName = "AirKick",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://101343807486103"] = {
+            DisplayName = "Grab",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://77227627259890"] = {
+            DisplayName = "TKicks",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://118428271885264"] = {
+            DisplayName = "JAxe",
+            ParryTime = 0.6
+        },
+        ["rbxassetid://139635086288466"] = {
+            DisplayName = "SKick",
+            ParryTime = 0.03
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Blood"] = {
+        ["rbxassetid://102859855682575"] = {
+            DisplayName = "SA1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://121165825323703"] = {
+            DisplayName = "SA2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://97299411183360"] = {
+            DisplayName = "SA3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://108210396247589"] = {
+            DisplayName = "SA4",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://72120299538507"] = {
+            DisplayName = "A5",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://108328017042857"] = {
+            DisplayName = "HA1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://135073810078982"] = {
+            DisplayName = "HA2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://77201619944829"] = {
+            DisplayName = "HA3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://112261341039063"] = {
+            DisplayName = "DA1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://131531352881934"] = {
+            DisplayName = "DA2",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://83634962876318"] = {
+            DisplayName = "DA3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://88130783459470"] = {
+            DisplayName = "DA4",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://133834308901756"] = {
+            DisplayName = "DA5",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://11712357411"] = {
+            DisplayName = "BSpear",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://137642068107171"] = {
+            DisplayName = "Harvest",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://71162844303569"] = {
+            DisplayName = "SThrow",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://71759030462096"] = {
+            DisplayName = "Harvest",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://78626550182728"] = {
+            DisplayName = "BShot",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://83578675861387"] = {
+            DisplayName = "Massacre",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://95199124878661"] = {
+            DisplayName = "Bleed",
+            ParryTime = 0.01
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Katana"] = {
+        ["rbxassetid://129065859985784"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://139772568144459"] = {
+            DisplayName = "A2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://96184661180348"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://117870259847730"] = {
+            DisplayName = "A4",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://71970126024201"] = {
+            DisplayName = "A5",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://11910129085"] = {
+            DisplayName = "Slash",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://18876739770"] = {
+            DisplayName = "PSlash",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://11878727337"] = {
+            DisplayName = "DDash",
+            ParryTime = 0.1
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Gun"] = {
+        ["rbxassetid://111236368889414"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://97806818316622"] = {
+            DisplayName = "Blast",
+            ParryTime = 0.5
+        },
+        ["rbxassetid://100241082948230"] = {
+            DisplayName = "GImpact",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://93773856476225"] = {
+            DisplayName = "GShot",
+            ParryTime = 0.03
+        },
+        ["rbxassetid://138055868483823"] = {
+            DisplayName = "BShot",
+            ParryTime = 0.04
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Curse"] = {
+        ["rbxassetid://80811485604651"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://137285044411892"] = {
+            DisplayName = "A2",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://118743332180152"] = {
+            DisplayName = "A3",
+            ParryTime = 0.1
+        },
+	["M1Time"] = 0.01
+      },
+    
+    ["Fox"] = {
+        ["rbxassetid://12017334150"] = {
+            DisplayName = "Tail",
+            ParryTime = 0.4
+        },
+        ["rbxassetid://14297962757"] = {
+            DisplayName = "Head",
+            ParryTime = 0.1
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Ghost"] = {
+        ["rbxassetid://106534510737009"] = {
+            DisplayName = "A1",
+            ParryTime = 0.03
+        },
+        ["rbxassetid://129762207733727"] = {
+            DisplayName = "A2",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://77441497715813"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://95517819273324"] = {
+            DisplayName = "A4",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://83066753856228"] = {
+            DisplayName = "Mirror",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://99175380122775"] = {
+            DisplayName = "Bloom",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://114379755951249"] = {
+            DisplayName = "Bloom",
+            ParryTime = 0.2
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Knife"] = {
+        ["rbxassetid://16682629288"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://16682632436"] = {
+            DisplayName = "A2",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://16682635520"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://16683286402"] = {
+            DisplayName = "A4",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://16683151375"] = {
+            DisplayName = "A5",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://16695689082"] = {
+            DisplayName = "QSlash",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://16697438626"] = {
+            DisplayName = "SCut",
+            ParryTime = 0.3
+        },
+        ["rbxassetid://16839286899"] = {
+            DisplayName = "TKnife",
+            ParryTime = 0.3
+        },
+        ["rbxassetid://16839286899"] = {
+            DisplayName = "TKnife2",
+            ParryTime = 0.3
+        },
+        ["rbxassetid://16816634394"] = {
+            DisplayName = "Stab",
+            ParryTime = 0.2
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Accident"] = {
+        ["rbxassetid://16890297971"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://16891736267"] = {
+            DisplayName = "A2",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://16880229396"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://16890290649"] = {
+            DisplayName = "A4",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://16855989139"] = {
+            DisplayName = "Truck",
+            ParryTime = 0.4
+        },
+        ["rbxassetid://16868674349"] = {
+            DisplayName = "MCycle",
+            ParryTime = 0.1
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Mouth"] = {
+        ["rbxassetid://138017749207265"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://106751803088258"] = {
+            DisplayName = "A2",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://100062210647241"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://127034573857183"] = {
+            DisplayName = "A4",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://134237847965770"] = {
+            DisplayName = "Scream",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://100335720200862"] = {
+            DisplayName = "Spit",
+            ParryTime = 0.3
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["DHunter"] = {
+        ["rbxassetid://18422351999"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://18422353940"] = {
+            DisplayName = "A2",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://18422422384"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://18422358571"] = {
+            DisplayName = "A4",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://18425733308"] = {
+            DisplayName = "Gun",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://72728207540853"] = {
+            DisplayName = "Chainsaw",
+            ParryTime = 0.3
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Cockroach"] = {
+        ["rbxassetid://85515792655611"] = {
+            DisplayName = "A1",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://75555169086093"] = {
+            DisplayName = "A2",
+            ParryTime = 0.2
+        },
+        ["rbxassetid://75947802709547"] = {
+            DisplayName = "A3",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://18506359250"] = {
+            DisplayName = "LSmash",
+            ParryTime = 0.2
+        },
+        ["rbxassetid://18615607230"] = {
+            DisplayName = "TSmack",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://18512366116"] = {
+            DisplayName = "Crawl",
+            ParryTime = 0.1
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["BBreaker"] = {
+        ["rbxassetid://131417089814404"] = {
+            DisplayName = "A1",
+            ParryTime = 0.02
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Amnesia"] = {
+        ["rbxassetid://18873267542"] = {
+            DisplayName = "A1",
+            ParryTime = 0.02
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Sniper"] = {
+        ["rbxassetid://103445793326233"] = {
+            DisplayName = "A1",
+            ParryTime = 0.03
+        },
+        ["rbxassetid://139956850160088"] = {
+            DisplayName = "A2",
+            ParryTime = 0.04
+        },
+        ["rbxassetid://86589132535679"] = {
+            DisplayName = "A3",
+            ParryTime = 0.02
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Fujimoto"] = {
+        ["rbxassetid://81684375898459"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://86948339624827"] = {
+            DisplayName = "A2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://75476254113257"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Chicken"] = {
+        ["rbxassetid://14333811745"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://14333799615"] = {
+            DisplayName = "A2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://75476254113257"] = {
+            DisplayName = "Crow",
+            ParryTime = 0.01
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Pillbug"] = {
+        ["rbxassetid://75392329353558"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://88307039916974"] = {
+            DisplayName = "A2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://90178492259675"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://82956467971212"] = {
+            DisplayName = "A4",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://135401956500109"] = {
+            DisplayName = "Bash",
+            ParryTime = 0.2
+        },
+        ["rbxassetid://74971965104841"] = {
+            DisplayName = "Roll",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://113411618979456"] = {
+            DisplayName = "Crunch",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://98718135366397"] = {
+            DisplayName = "Slam",
+            ParryTime = 0.7
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Locust"] = {
+        ["rbxassetid://108029710645461"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://90445449982084"] = {
+            DisplayName = "A2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://103966308730095"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://102416548042930"] = {
+            DisplayName = "A4",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://92833910473239"] = {
+            DisplayName = "A5",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://102724289166566"] = {
+            DisplayName = "LKick",
+            ParryTime = 0.03
+        },
+        ["rbxassetid://135445216531771"] = {
+            DisplayName = "Trumpet",
+            ParryTime = 0.04
+        },
+        ["rbxassetid://105184768500556"] = {
+            DisplayName = "Slam",
+            ParryTime = 0.1
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Death"] = {
+        ["rbxassetid://18752846298"] = {
+            DisplayName = "A1",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://18752851189"] = {
+            DisplayName = "A2",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://18752853691"] = {
+            DisplayName = "A3",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://18752934659"] = {
+            DisplayName = "A4",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://18747600972"] = {
+            DisplayName = "Eat",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://18762035148"] = {
+            DisplayName = "DSummon",
+            ParryTime = 0.03
+        },
+        ["rbxassetid://18761739621"] = {
+            DisplayName = "BBreaker",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://18747378502"] = {
+            DisplayName = "SPunch",
+            ParryTime = 0.06
+        },
+        ["rbxassetid://16841649820"] = {
+            DisplayName = "GBeyond",
+            ParryTime = 0.3
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["War"] = {
+        ["rbxassetid://136048820772861"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://75513054512278"] = {
+            DisplayName = "A2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://88001392724253"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://101456554341177"] = {
+            DisplayName = "A4",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://101986438757926"] = {
+            DisplayName = "A5",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://81022830246637"] = {
+            DisplayName = "TCut",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://90134515938549"] = {
+            DisplayName = "Throw",
+            ParryTime = 0.03
+        },
+        ["rbxassetid://75010296486367"] = {
+            DisplayName = "Bang",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://94044489660264"] = {
+            DisplayName = "Weaponize",
+            ParryTime = 0.01
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Lance"] = {
+        ["rbxassetid://79706034980493"] = {
+            DisplayName = "A1",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://80121421511393"] = {
+            DisplayName = "A2",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://98644397057818"] = {
+            DisplayName = "Drill",
+            ParryTime = 0.03
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Rapier"] = {
+        ["rbxassetid://82070101347403"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://82235154264940"] = {
+            DisplayName = "A2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://94738741498377"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://125588691038726"] = {
+            DisplayName = "A4",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://139462233848016"] = {
+            DisplayName = "A5",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://87020395606342"] = {
+            DisplayName = "Affondo",
+            ParryTime = 0.03
+        },
+        ["rbxassetid://136733400922805"] = {
+            DisplayName = "Coupe",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://81128507918382"] = {
+            DisplayName = "Barrage",
+            ParryTime = 0.01
+        },  
+	["M1Time"] = 0.01
+      },
+
 }
 
 local IgnoreIds = {
     180435571, 129112099258440, 128010753566363, 72321750070876, 180426354, 15955138832, 180435792, 91222199906938, 180435792, 12111853606, 119285935645933, 73075721944539, 17840667953, 17720360732,
-    18273589453, 17128101127, 16350767759, 16339393705, 16339393705, 16351030375, 16374139482, 17681121920, 11474312302, 101293973781713
+    18273589453, 17128101127, 16350767759, 16339393705, 16339393705, 16351030375, 16374139482, 17681121920, 11474312302, 101293973781713, 11879328946, 96527662414210, 11818139308, 17052507655,
+    125230699095367, 18468295294, 85515792655611, 75947802709547, 75555169086093, 75668241947729, 96919042359857, 91566248446600, 102524106407800, 136089449414121, 119526377939828, 84255879241094,
+    100733287202103, 75669237308114, 88202267684994, 137441770199364, 73080548572547, 77517794514362, 18725573262, 82594800564762, 94044489660264, 131841887717543, 109509909899622, 127357177455275,
+    88297824583381, 75690703551305,
+
 }
 
 
@@ -373,7 +1052,7 @@ local ParriedAnimation = {
 
 
 local StunnedAnimation = {"rbxassetid://12112356702", "rbxassetid://12112241629", "rbxassetid://114860432034250", "rbxassetid://18189770910"}
-local ParryingAnimation = {"rbxassetid://86893997441077"}
+local ParryingAnimation = {"rbxassetid://86893997441077", "rbxassetid://98759397343511"}
 local ParryFailed = {""} -- BlockHit
 
 
