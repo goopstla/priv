@@ -29,47 +29,47 @@ local GameConfig = {
     ["Charger"] = {
         ["rbxassetid://137076097396856"] = {
             DisplayName = "A1",
-            ParryTime = 0
+            ParryTime = 0.01
         },
-	["M1Time"] = 0
+	["M1Time"] = 0.01
       },
 
     ["Jockey"] = {
         ["rbxassetid://132275181942224"] = {
             DisplayName = "A1",
-            ParryTime = 0
+            ParryTime = 0.01
         },
-	["M1Time"] = 0
+	["M1Time"] = 0.01
       },
 
     ["Hunter"] = {
         ["rbxassetid://127571478614797"] = {
             DisplayName = "A1",
-            ParryTime = 0
+            ParryTime = 0.01
         },
 	["M1Time"] = 0
       },
     ["Witch"] = {
         ["rbxassetid://117823145278009"] = {
             DisplayName = "A1",
-            ParryTime = 0
+            ParryTime = 0.01
         },
         ["rbxassetid://127864541303318"] = {
             DisplayName = "A2",
-            ParryTime = 0
+            ParryTime = 0.01
         },
-	["M1Time"] = 0
+	["M1Time"] = 0.01
       },
     ["Tank"] = {
         ["rbxassetid://117234967138048"] = {
             DisplayName = "A1",
-            ParryTime = 0
+            ParryTime = 0.01
         },
         ["rbxassetid://70418861667171"] = {
             DisplayName = "A2",
-            ParryTime = 0
+            ParryTime = 0.01
         },
-	["M1Time"] = 0
+	["M1Time"] = 0.01
       },
 }
 
@@ -84,7 +84,7 @@ local IgnoreIds = {
     135786259766600, 85001245127842, 180436148, 78483712198400,
     83121686204649, 124533795581666, 82609577177900, 91518905988764,
     76421770436225, 126705724590194, 16488456076, 125750702,
-    136383835228005, 133701766307335, 16488472267,
+    136383835228005, 133701766307335, 16488472267, 106692374553039
 }
 
 
@@ -94,7 +94,7 @@ local ParriedAnimation = {
 }
 
 
-local StunnedAnimation = {"rbxassetid://18144001283", "rbxassetid://90588955029387", "rbxassetid://114860432034250"}
+local StunnedAnimation = {"rbxassetid://18144001283", "rbxassetid://90588955029387", "rbxassetid://114860432034250", "rbxassetid://18189770910"}
 local ParryingAnimation = {""}
 local ParryFailed = {""} -- BlockHit
 
