@@ -185,7 +185,9 @@ local GameConfig = {
         },
         ["rbxassetid://107526883789772"] = {
             DisplayName = "LFire",
-            HitTimes = {0.2, 0.60, 1.10, 1.14, 1.16, 1.18}
+            HitTimes = {0.3, 0.70, 1, 1.10, 1.30},
+            SpamAfterHits = true,
+            HoldDuration = 2
         },
 	["M1Time"] = 0.02
       },
@@ -281,31 +283,238 @@ local GameConfig = {
         },
 	["M1Time"] = 0.01
       },
- 
-      
 
+    ["DSP"] = {
+        ["rbxassetid://93069223272934"] = {
+            DisplayName = "SBlades",
+            HitTimes = {0.03, 0.08}
+        },
+        ["rbxassetid://130930415346479"] = {
+            DisplayName = "Chains",
+            ParryTime = 0.02
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["DSP"] = {
+        ["rbxassetid://93069223272934"] = {
+            DisplayName = "SBlades",
+            HitTimes = {0.03, 0.08}
+        },
+        ["rbxassetid://130930415346479"] = {
+            DisplayName = "Chains",
+            ParryTime = 0.02
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["GCoil"] = {
+        ["rbxassetid://131027801153793"] = {
+            DisplayName = "A1",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://125187215797634"] = {
+            DisplayName = "A2",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://117286112044184"] = {
+            DisplayName = "A3",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://140577210819778"] = {
+            DisplayName = "A4",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://103700377933107"] = {
+            DisplayName = "AUppercut",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://128336212609166"] = {
+            DisplayName = "Att",
+            HitTimes = {0.01, 0.4, 0.6, 1, 1.2}
+        },
+        ["rbxassetid://102548047352123"] = {
+            DisplayName = "Magnitude",
+            HitTimes = {0.01, 0.3, 0.6, 1.10}
+        },
+        ["rbxassetid://100267401447618"] = {
+            DisplayName = "Mass",
+            HitTimes = {0.01, 0.1, 0.5}
+        },
+	["M1Time"] = 0.02
+      },
+
+    ["FBox"] = {
+        ["rbxassetid://108540555531019"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://72169211968358"] = {
+            DisplayName = "A2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://120485196057322"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://122323792709212"] = {
+            DisplayName = "A4",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://94771776060731"] = {
+            DisplayName = "USeize",
+            ParryTime = 0.04
+        },
+        ["rbxassetid://85814704031451"] = {
+            DisplayName = "Siphon",
+            ParryTime = 0.04
+        },
+    ["M1Time"] = 0.01
+      },
+
+    ["PBall"] = {
+        ["rbxassetid://73985805856779"] = {
+            DisplayName = "A1",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://119899286936305"] = {
+            DisplayName = "A2",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://85523920365148"] = {
+            DisplayName = "A3",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://85017914532333"] = {
+            DisplayName = "A4",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://130083509971492"] = {
+            DisplayName = "Splat",
+            HitTimes = {0.1, 0.4}
+        }, 
+        ["rbxassetid://111697202570870"] = {
+            DisplayName = "QuickTrigger",
+            ParryTime = 0.01,
+            SpamAfterHits = true,
+            HoldDuration = 1
+        },     
+    ["M1Time"] = 0.5
+      },
+
+    ["HCoil"] = {
+        ["rbxassetid://73985805856779"] = {
+            DisplayName = "A1",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://119899286936305"] = {
+            DisplayName = "A2",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://85523920365148"] = {
+            DisplayName = "A3",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://85017914532333"] = {
+            DisplayName = "A4",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://72025635633772"] = {
+            DisplayName = "RBlow",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://101156982990361"] = {
+            DisplayName = "ELife",
+            ParryTime = 0.3
+        },
+        ["rbxassetid://118619457447192"] = {
+            DisplayName = "LShot",
+            ParryTime = 0.5
+        },
+    ["M1Time"] = 0.01
+      },
+
+    ["IceStaff"] = {
+        ["rbxassetid://91492748624197"] = {
+            DisplayName = "Cast",
+            ParryTime = 0.4,
+            SpamAfterHits = true,
+            HoldDuration = 2      
+        },
+        ["rbxassetid://107581974090133"] = {
+            DisplayName = "Mirror",
+            ParryTime = 0.60,
+            SpamAfterHits = true,
+            HoldDuration = 4
+        },
+    ["M1Time"] = 0.01
+      },
+
+    ["Decoy"] = {
+        ["rbxassetid://120046172089382"] = {
+            DisplayName = "A1",
+            ParryTime = 0.03
+        },
+        ["rbxassetid://108044328082332"] = {
+            DisplayName = "A2",
+            ParryTime = 0.03
+        },
+        ["rbxassetid://89446805606063"] = {
+            DisplayName = "A3",
+            ParryTime = 0.03
+        },
+        ["rbxassetid://122323792709212"] = {
+            DisplayName = "A4",
+            ParryTime = 0.03
+        },
+    ["M1Time"] = 0.01
+      },
+
+    ["Katana"] = {
+        ["rbxassetid://103208136760052"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://131647595371803"] = {
+            DisplayName = "A2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://111276731769963"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://106514784572731"] = {
+            DisplayName = "A4",
+            ParryTime = 0.01
+        },
+    ["M1Time"] = 0.01
+      },
 }
 
 local IgnoreIds = {
     90239646088430, 86991526295108, 103376655590172, 124848101784949, 15766489816, 15766504614, 15766532284, 15766479023, 74218582957002, 98032935146356, 136126587227623, 95757888077754,
     136126587227623, 16349744984, 114218184791803, 103012445884878, 14954197347, 16361731479, 16361711613, 18869199814, 89081893332419, 127273947335959, 103368416489313, 15817264367,
     111690067265950, 81147022531650, 115085822212678, 79125089919347, 17046610721, 112407385491956, 133771450008161, 133759823052743, 125609599992470, 130005241814778, 117730693457109,
-    119131342678806, 77724736658920, 120147427925872, 17716158788, 113550502328598, 
-    
+    119131342678806, 77724736658920, 120147427925872, 17716158788, 113550502328598, 97626480164991, 113973798800257, 104919213663824, 126623509290798,77293284942861, 92901201880967,
+    87202002576369, 76440441206653, 123468470138341, 79925415351085, 129869051098265, 131566757788752, 110183522012564, 76476520118038, 118616364588182, 116666854779054, 91245420182026,
+    86285554435823, 15646692581, 73531506505217, 101156982990361, 16360636442, 18824236306, 130974714254788, 18824255332, 82469624007895, 132013637125794, 96799101267483, 89797430940395,
+    79654710707728, 133314501284966,
 
+
+    
 
 }
 
 
 
 local ParriedAnimation = {
-"rbxassetid://75958374912400", "rbxassetid://76399304572152", "rbxassetid://130005241814778",
+"rbxassetid://",
 }
 
 
 local StunnedAnimation = {"rbxassetid://133759823052743", "rbxassetid://125609599992470", "rbxassetid://130005241814778", "rbxassetid://180436334"}
-local ParryingAnimation = {"rbxassetid://86893997441077", "rbxassetid://98759397343511"}
-local ParryFailed = {"rbxassetid://125673373166786", "rbxassetid://95378544847153"}
+local ParryingAnimation = {"rbxassetid://"}
+local ParryFailed = {"rbxassetid://"}
 
 
 local AutoParryRange = 10
@@ -314,7 +523,7 @@ local ParryWindow = 0.06
 local ProbabilityToParry = 100
 local DefaultReactionTime = 0.1
 local ParryOffset = 0
-local BlockHoldTime = 0.4
+local BlockHoldTime = 0.07
 
 
 -- ==========================================
@@ -646,8 +855,6 @@ local function CreateFoldersSection()
     print("[UI] Folders Section Created")
 end
 
-
--- Replace your CreateGroupSliders function with this version that embeds the style name into the elements themselves so search bars targeting children elements will match it
 local function CreateGroupSliders()
     local GroupedStyles = {}
     
@@ -673,15 +880,38 @@ local function CreateGroupSliders()
                 continue
             end
             
-            -- Prepend the style name to the slider label so the UI's internal text search picks up the style name
             local combinedLabel = "[" .. StyleName .. "] " .. nameLabel
-            AnimationIdSliders[animationId] = StyleSection:Slider("Reaction Time: " .. combinedLabel, 0.3, 0.01, 0, 5, "", function(v)
-                Info.ParryTime = v 
-                Info.ReactionTime = v
-            end)
             
-            local currentVal = Info.ParryTime or Info.ReactionTime or Info.M1Time or DefaultReactionTime
-            AnimationIdSliders[animationId]:Set(currentVal)
+            if Info.HitTimes and type(Info.HitTimes) == "table" then
+                for hitIndex, hitValue in ipairs(Info.HitTimes) do
+                    local hitLabel = combinedLabel .. " (Hit " .. hitIndex .. ")"
+                    StyleSection:Slider("Hit Time: " .. hitLabel, hitValue, 0.01, 0, 5, "s", function(v)
+                        Info.HitTimes[hitIndex] = v
+                    end)
+                end
+            else
+                AnimationIdSliders[animationId] = StyleSection:Slider("Reaction Time: " .. combinedLabel, 0.3, 0.01, 0, 5, "", function(v)
+                    Info.ParryTime = v 
+                    Info.ReactionTime = v
+                end)
+                
+                local currentVal = Info.ParryTime or Info.ReactionTime or Info.M1Time or DefaultReactionTime
+                AnimationIdSliders[animationId]:Set(currentVal)
+            end
+            
+            if Info.HoldDuration ~= nil then
+                StyleSection:Slider("Hold Duration: " .. combinedLabel, Info.HoldDuration, 0.1, 0, 30, "s", function(v)
+                    Info.HoldDuration = v > 0 and v or nil
+                end)
+            end
+
+            -- Adds a customizable Spam Speed slider if SpamAfterHits is active for this move
+            if Info.SpamAfterHits then
+                Info.SpamInterval = Info.SpamInterval or 0.01 -- Default speed
+                StyleSection:Slider("Spam Speed: " .. combinedLabel, Info.SpamInterval, 0.01, 0.1, 2, "s", function(v)
+                    Info.SpamInterval = v
+                end)
+            end
         end
         
         Number += 1
@@ -731,6 +961,70 @@ local function CreateAPSection()
     Window:Set(ParryWindow)
     DefaultSection:Label("This is usually constant, don't change this.")
     
+end
+
+local function ToggleDamageLogger(state)
+    if not state then
+        if connection then
+            connection:Disconnect()
+            connection = nil 
+        end
+        print("[Logger] Heartbeat damage logger DISABLED.")
+        return
+    end
+
+    if connection then return end
+    print("[Logger] Heartbeat damage logger ACTIVE.")
+    
+    connection = RunService.Heartbeat:Connect(function()
+        local char = LocalPlayer.Character
+        local hum = char and char:FindFirstChild("Humanoid")
+        if not hum then return end 
+
+        if not lastCharacter or (char ~= lastCharacter) then
+            lastCharacter = char
+            previousHealth = hum.Health
+        end
+        
+        local currentHealth = hum.Health
+        
+        -- Debug print every frame if health changes at all
+        if currentHealth ~= previousHealth then
+            print(string.format("[DEBUG] Health changed! Old: %.1f -> New: %.1f", previousHealth, currentHealth))
+        end
+        
+        if currentHealth < previousHealth then
+            local damageTaken = previousHealth - currentHealth
+            warn(string.format("[HIT DETECTED] Took %d damage! Scanning target pool...", damageTaken))
+            
+            local charactersToCheck = (#TargetCharacters > 0) and TargetCharacters or GetAllCharactersInFolder()
+            print("[DEBUG] Characters to check count:", #charactersToCheck)
+            
+            if #charactersToCheck > 0 then
+                for _, targetChar in ipairs(charactersToCheck) do
+                    local activeAnimations = AnimationTracker:Update(targetChar) or {}
+                    print(string.format("[DEBUG] Target %s has %d active animations", targetChar.Name, #activeAnimations))
+                    
+                    for _, anim in ipairs(activeAnimations) do
+                        local assetId = tostring(anim.AnimationId or "Unknown")
+                        local poolData = GameConfig[assetId]
+                        
+                        warn(string.format(
+                            "[HIT LOGGED] DMG: %d | Anim: %s (%s) | Time: %.3f", 
+                            damageTaken, 
+                            poolData and poolData.DisplayName or anim.Name or "Unknown",
+                            assetId, 
+                            anim.TimePosition or 0
+                        ))
+                    end
+                end
+            else
+                print("[DEBUG] No characters found in pool to scan!")
+            end
+        end
+        
+        previousHealth = currentHealth
+    end)
 end
 
 local function CreateClipboardSection()
@@ -784,12 +1078,9 @@ local function CreateClipboardSection()
             config.Type = "Button"
         end
 
-        if config.Type == "Toggle" then
+       if config.Type == "Toggle" then
             instance = ClipboardSection:Toggle(config.Name, config.Default, function(on)
-                if on then  
-                    config.Callback(on, instance)                    
-                end
-                instance:Set(false) 
+                config.Callback(on, instance)                    
             end)
 
             if config.Keybind then
@@ -830,7 +1121,7 @@ CreateClipboardSection()
 
 -- ==========================================
 local PARRY_DISTANCE = 15 
-local PARRY_COOLDOWN = 0.01
+local PARRY_COOLDOWN = 0
 
 local activeOrbs = {}
 local lastParryAt = 0
@@ -974,53 +1265,7 @@ local CurrentParryState = ParryState.IDLE
 -- Helpers
 -- ==========================================
 
-local function ToggleDamageLogger(state)
-    if not state then
-        if connection then
-        connection:Disconnect()
-        connection = nil end
-        print("[Logger] Heartbeat damage logger DISABLED.")
-        return
-    end
 
-    if connection then return end -- Prevent duplicate connections
-    print("[Logger] Heartbeat damage logger ACTIVE.")
-    
-    connection = RunService.Heartbeat:Connect(function()
-        local char = LocalPlayer.Character
-        local hum = char and char:FindFirstChild("Humanoid")
-        if not hum then return end 
-
-        if lastCharacter and (char.Address ~= lastCharacter.Address) then
-            lastCharacter = char
-            previousHealth = hum.Health
-        end
-        local currentHealth = hum.Health
-        if currentHealth < previousHealth then
-            local damageTaken = previousHealth - currentHealth
-            
-            if #TargetCharacters then
-                local activeAnimations = AnimationTracker:Update(TargetCharacter) or {}
-                
-                
-                for _, anim in activeAnimations do
-                    if not anim.AnimationId or anim.TimePosition < 0.1 or anim.TimePosition > 0.7 then continue end 
-                    local assetId = tostring(anim.AnimationId)
-                    local poolData = GameConfig[assetId]
-                    warn(string.format(
-                        "[HIT] %d DMG | Anim: %s (%s) %s | Frame Time: %.3f", 
-                        damageTaken, 
-                        poolData and poolData.DisplayName or anim.Name or "Unknown",
-                        assetId, 
-                        poolData and poolData.Style or "",
-                        anim.TimePosition or 0
-                    ))
-                end
-            end
-        end
-        previousHealth = currentHealth
-    end)
-end
 
 -- ==========================================
 -- Parry Core Logic
@@ -1471,11 +1716,22 @@ local function CalculateParryTiming(attackConfig, StartTime)
     else
         local parryWindowStart = adjustedReactionTime
         local parryWindowEnd = adjustedReactionTime + ParryWindow
-        table.insert(windows, {
-            Start = StartTime + parryWindowStart,
-            Expire = StartTime + parryWindowEnd,
-            Parried = false
-        })
+        
+        -- If SpamAfterHits is enabled on a single-hit/ParryTime move, 
+        -- we can split it or treat it as a multi-window structure
+        if attackConfig.SpamAfterHits then
+            table.insert(windows, {
+                Start = StartTime + parryWindowStart,
+                Expire = StartTime + parryWindowEnd + (attackConfig.HoldDuration or 0.3),
+                Parried = false
+            })
+        else
+            table.insert(windows, {
+                Start = StartTime + parryWindowStart,
+                Expire = StartTime + parryWindowEnd,
+                Parried = false
+            })
+        end
     end
     
     return windows
@@ -1535,23 +1791,31 @@ local function ExecuteParry(regData, attackConfig)
     else 
         if LastPendingRegData ~= regData then
             LastPendingRegData = regData
-            BlockStart(LastPendingRegData.BlockStart)
-            --[[print(string.format("Block triggered by [%s | %s] " , 
-                attackConfig.Style, 
-                attackConfig.DisplayName
-                ))]]
+            
+            -- Check if this specific move uses HoldDuration globally
+            if attackConfig.HoldDuration and not attackConfig.SpamAfterHits then
+                task.spawn(function()
+                    local endTime = os.clock() + attackConfig.HoldDuration
+                    while os.clock() < endTime do
+                        if AutoParryToggle.Get() == true then
+                            if ismouse1pressed() then mouse2click() end
+                            keypress(ParryKey)
+                        end
+                        task.wait(0.05)
+                    end
+                    keyrelease(ParryKey)
+                end)
+            else
+                BlockStart(LastPendingRegData.BlockStart)
+            end
+            
         elseif LastPendingRegData == regData then
             if regData.DidALoop then  
-                print(string.format("Block retriggered for [%s | %s] because its the same key but it looped", 
-                attackConfig.Style, 
-                attackConfig.DisplayName))
                 regData.DidALoop = false
-                BlockStart(regData.BlockStart)
-            else
-            --    print(string.format("Block retriggered for  [%s | %s] since we're still in window", attackConfig.Style, attackConfig.DisplayName))
+                if not attackConfig.HoldDuration then
+                    BlockStart(regData.BlockStart)
+                end
             end
-
-         --   BlockStart(regData.StartTime)
         end
     end
 end
@@ -1589,16 +1853,34 @@ local function EvaluateAnimation(anim, character, localCharacter, localRoot, tar
         return
     end
     
-    -- MULTI-HIT PARRY EXECUTION
-    for _, window in ipairs(regData.Windows) do
+    -- MULTI-HIT / SPAM PARRY EXECUTION
+    for index, window in ipairs(regData.Windows) do
         if not window.Parried and now >= window.Start and now <= window.Expire then
             window.Parried = true
             LastPendingRegData = regData
-            BlockStart(window.Start)
+            
+            -- Check if spamming/holding is enabled for this attack
+            if attackConfig.SpamAfterHits then
+                task.spawn(function()
+                    local endTime = os.clock() + (attackConfig.HoldDuration or 0.3)
+                    local interval = attackConfig.SpamInterval or 0.01
+                    while os.clock() < endTime do
+                        if AutoParryToggle.Get() == true then
+                            if ismouse1pressed() then mouse2click() end
+                            keypress(ParryKey)
+                        end
+                        task.wait(interval)
+                    end
+                    keyrelease(ParryKey)
+                end)
+            else
+                BlockStart(window.Start)
+            end
             break
         end
     end
 end
+
 
 local function EvaluateCharacter(character, localCharacter, localRoot, currentActiveIds)
     -- CHARACTER VALIDATION
@@ -1810,7 +2092,7 @@ end)
 
 
 local STATE_MACHINE_TICK = 0.05
-local UTILITY_TICK = 0.1 -- Run 2 times per second
+local UTILITY_TICK = 0.05 -- Run 2 times per second
 local LastCycleCheck = 0 
 
 local function MainLoop()
