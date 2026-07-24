@@ -89,7 +89,7 @@ local GameConfig = {
         },
         ["rbxassetid://18926648658"] = {
             DisplayName = "Disorder",
-            HitTimes = {0.01, 0.08}
+            HitTimes = {0.01, 0.55}
         },
 	["M1Time"] = 0.1
       },
@@ -117,22 +117,182 @@ local GameConfig = {
         },
         ["rbxassetid://15959397413"] = {
             DisplayName = "3PSlash",
-            HitTimes = {0.01, 0.08}
+            HitTimes = {0.01, 0.60, 1.0}
         },
-        
-        
+        ["rbxassetid://77635247043579"] = {
+            DisplayName = "SPiercer",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://81383574140911"] = {
+            DisplayName = "LCleave",
+            HitTimes = {0.20, 1.10}
+        },     
 	["M1Time"] = 0.01
       },
 
-    
+    ["SCoil"] = {
+        ["rbxassetid://15646698428"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://15646700849"] = {
+            DisplayName = "A2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://15646703230"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://15646704641"] = {
+            DisplayName = "A4",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://109125767311650"] = {
+            DisplayName = "SBlitz1",
+            ParryTime = 0.01
+        },
+    ["rbxassetid://101170052197628"] = {
+            DisplayName = "Barrage",
+            ParryTime = 0.01
+        },
+	["M1Time"] = 0.01
+      },
 
-    
+    ["ZStaff"] = {
+        ["rbxassetid://134512934636868"] = {
+            DisplayName = "A1",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://86663865137022"] = {
+            DisplayName = "A2",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://91729784630967"] = {
+            DisplayName = "A3",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://135976885677437"] = {
+            DisplayName = "A4",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://79400483922909"] = {
+            DisplayName = "RMark",
+            ParryTime = 0.45
+        },
+        ["rbxassetid://18824534812"] = {
+            DisplayName = "CBind",
+            ParryTime = 0.60
+        },
+        ["rbxassetid://107526883789772"] = {
+            DisplayName = "LFire",
+            HitTimes = {0.2, 0.60, 1.10, 1.14, 1.16, 1.18}
+        },
+	["M1Time"] = 0.02
+      },
+
+    ["ZombieMob"] = {
+        ["rbxassetid://72617289834872"] = {
+            DisplayName = "A1",
+            ParryTime = 0.05
+        },
+        ["rbxassetid://86680673667920"] = {
+            DisplayName = "A2",
+            ParryTime = 0.05
+        },
+        ["rbxassetid://106282304312173"] = {
+            DisplayName = "A3",
+            ParryTime = 0.05
+        },
+        ["rbxassetid://101845365896474"] = {
+            DisplayName = "A4",
+            ParryTime = 0.05
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["Claymore"] = {
+        ["rbxassetid://130214698387829"] = {
+            DisplayName = "A1",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://93668032187384"] = {
+            DisplayName = "A2",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://126778397413410"] = {
+            DisplayName = "A3",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://104859715200864"] = {
+            DisplayName = "A4",
+            ParryTime = 0.02
+        },
+        ["rbxassetid://129268815375048"] = {
+            DisplayName = "IronSplitter",
+            ParryTime = 0.04
+        },
+        ["rbxassetid://127210586361178"] = {
+            DisplayName = "SilentCrown",
+            ParryTime = 0.04
+        },
+        ["rbxassetid://123859263697105"] = {
+            DisplayName = "CastleCrasher",
+            ParryTime = 0.4
+        },
+        ["rbxassetid://75694797914771"] = {
+            DisplayName = "VowBreaker",
+            ParryTime = 0.90
+        },
+	["M1Time"] = 0.01
+      },
+
+    ["DOSD"] = {
+        ["rbxassetid://17617871743"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://17617856975"] = {
+            DisplayName = "A2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://17617854921"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://17617851913"] = {
+            DisplayName = "A4",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://17638627637"] = {
+            DisplayName = "Rewind",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://88322204232318"] = {
+            DisplayName = "TSlice",
+            ParryTime = 0.5
+        },
+        ["rbxassetid://86195003905855"] = {
+            DisplayName = "Expiration",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://85194597940994"] = {
+            DisplayName = "DCut",
+            ParryTime = 0.8
+        },
+	["M1Time"] = 0.01
+      },
+ 
+      
 
 }
 
 local IgnoreIds = {
     90239646088430, 86991526295108, 103376655590172, 124848101784949, 15766489816, 15766504614, 15766532284, 15766479023, 74218582957002, 98032935146356, 136126587227623, 95757888077754,
-    136126587227623, 16349744984, 114218184791803, 103012445884878, 14954197347, 16361731479, 16361711613, 18869199814
+    136126587227623, 16349744984, 114218184791803, 103012445884878, 14954197347, 16361731479, 16361711613, 18869199814, 89081893332419, 127273947335959, 103368416489313, 15817264367,
+    111690067265950, 81147022531650, 115085822212678, 79125089919347, 17046610721, 112407385491956, 133771450008161, 133759823052743, 125609599992470, 130005241814778, 117730693457109,
+    119131342678806, 77724736658920, 120147427925872, 17716158788, 113550502328598, 
+    
+
 
 }
 
@@ -486,6 +646,8 @@ local function CreateFoldersSection()
     print("[UI] Folders Section Created")
 end
 
+
+-- Replace your CreateGroupSliders function with this version that embeds the style name into the elements themselves so search bars targeting children elements will match it
 local function CreateGroupSliders()
     local GroupedStyles = {}
     
@@ -511,23 +673,15 @@ local function CreateGroupSliders()
                 continue
             end
             
-            -- Check if it's a multi-hit animation using HitTimes
-            if Info.HitTimes and type(Info.HitTimes) == "table" then
-                for index, hitTimeValue in ipairs(Info.HitTimes) do
-                    local hitSliderName = string.format("Hit %d: %s", index, nameLabel)
-                    AnimationIdSliders[animationId .. "_hit_" .. index] = StyleSection:Slider(hitSliderName, hitTimeValue, 0.01, 0, 3, "s", function(v)
-                        Info.HitTimes[index] = v
-                    end)
-                end
-            else
-                AnimationIdSliders[animationId] = StyleSection:Slider("Reaction Time: " .. nameLabel, 0, 0.01, 0, 1, "", function(v)
-                    if v ~= DefaultReactionTime then
-                        Info.ReactionTime = v                    
-                    end
-                end)
-                
-                AnimationIdSliders[animationId]:Set(Info.M1Time or Info.ReactionTime or DefaultReactionTime)
-            end
+            -- Prepend the style name to the slider label so the UI's internal text search picks up the style name
+            local combinedLabel = "[" .. StyleName .. "] " .. nameLabel
+            AnimationIdSliders[animationId] = StyleSection:Slider("Reaction Time: " .. combinedLabel, 0.3, 0.01, 0, 5, "", function(v)
+                Info.ParryTime = v 
+                Info.ReactionTime = v
+            end)
+            
+            local currentVal = Info.ParryTime or Info.ReactionTime or Info.M1Time or DefaultReactionTime
+            AnimationIdSliders[animationId]:Set(currentVal)
         end
         
         Number += 1
@@ -559,7 +713,8 @@ local function CreateAPSection()
 
     local DefaultSection = Config_Tab:Section("Default Configuration", "left")
     
-    local Time = DefaultSection:Slider("Default Reaction Time", 0.3, 0.01, 0, 1, "", function(v)
+    -- Changed max value parameter from 1 to 5 here as well
+    local Time = DefaultSection:Slider("Default Reaction Time", 0.3, 0.01, 0, 5, "", function(v)
         DefaultReactionTime = v
         UpdateSliders()
     end)
@@ -568,7 +723,8 @@ local function CreateAPSection()
 
     DefaultSection:Divider("Window")
     
-    local Window = DefaultSection:Slider("Default Parry Window", 0.3, 0.01, 0, 1, "", function(v)
+    -- Changed max value parameter from 1 to 5 here as well
+    local Window = DefaultSection:Slider("Default Parry Window", 0.3, 0.01, 0, 5, "", function(v)
         ParryWindow = v
         --ReleaseTime = ParryWindow/2
     end)
@@ -669,9 +825,12 @@ CreateFilesSection()
 UpdateClipboardSection()
 CreateClipboardSection()
 
+
+
+
 -- ==========================================
 local PARRY_DISTANCE = 15 
-local PARRY_COOLDOWN = 0
+local PARRY_COOLDOWN = 0.01
 
 local activeOrbs = {}
 local lastParryAt = 0
@@ -1651,7 +1810,7 @@ end)
 
 
 local STATE_MACHINE_TICK = 0.05
-local UTILITY_TICK = 0.5 -- Run 2 times per second
+local UTILITY_TICK = 0.1 -- Run 2 times per second
 local LastCycleCheck = 0 
 
 local function MainLoop()
