@@ -56,7 +56,13 @@ local GameConfig = {
             HitTimes = {0.2, 0.3, 0.35, 0.4, 0.8, 1.2},
             SpamAfterHits = true,
             HoldDuration = 1
-        },     
+        },
+        ["rbxassetid://86365005464462"] = {
+            DisplayName = "3Hook",
+            HitTimes = {0.1, 0.2, 0.3},
+            SpamAfterHits = true,
+            HoldDuration = 1
+        },
 	["M1Time"] = 0.1
       },
 
@@ -99,19 +105,19 @@ local GameConfig = {
     ["EMancer"] = {
         ["rbxassetid://111514870674596"] = {
             DisplayName = "A1",
-            ParryTime = 0.01
+            ParryTime = 0.03
         },
         ["rbxassetid://137089657943859"] = {
             DisplayName = "A2",
-            ParryTime = 0.01
+            ParryTime = 0.03
         },
         ["rbxassetid://126534726560672"] = {
             DisplayName = "A3",
-            ParryTime = 0.01
+            ParryTime = 0.03
         },
         ["rbxassetid://107063867380896"] = {
             DisplayName = "A4",
-            ParryTime = 0.01
+            ParryTime = 0.03
         },
         ["rbxassetid://98004378743040"] = {
             DisplayName = "Impale",
@@ -445,11 +451,11 @@ local GameConfig = {
         },
         ["rbxassetid://85523920365148"] = {
             DisplayName = "A3",
-            ParryTime = 0.02
+            ParryTime = 0.1
         },
         ["rbxassetid://85017914532333"] = {
             DisplayName = "A4",
-            ParryTime = 0.02
+            ParryTime = 0.1
         },
         ["rbxassetid://130083509971492"] = {
             DisplayName = "Splat",
@@ -499,15 +505,11 @@ local GameConfig = {
     ["IceStaff"] = {
         ["rbxassetid://91492748624197"] = {
             DisplayName = "Cast",
-            ParryTime = 0.4,
-            SpamAfterHits = true,
-            HoldDuration = 2      
+            ParryTime = 0.4, 
         },
         ["rbxassetid://107581974090133"] = {
             DisplayName = "Mirror",
             ParryTime = 0.60,
-            SpamAfterHits = true,
-            HoldDuration = 4
         },
     ["M1Time"] = 0.01
       },
@@ -578,13 +580,13 @@ local IgnoreIds = {
 
 
 local ParriedAnimation = {
-"rbxassetid://",
+"rbxassetid://75958374912400", "rbxassetid://76399304572152", "rbxassetid://130005241814778" 
 }
 
 
 local StunnedAnimation = {"rbxassetid://133759823052743", "rbxassetid://125609599992470", "rbxassetid://130005241814778", "rbxassetid://180436334"}
-local ParryingAnimation = {"rbxassetid://"}
-local ParryFailed = {"rbxassetid://"}
+local ParryingAnimation = {"rbxassetid://86893997441077", "rbxassetid://98759397343511"}
+local ParryFailed = {"rbxassetid://125673373166786", "rbxassetid://95378544847153"}
 
 
 local AutoParryRange = 10
