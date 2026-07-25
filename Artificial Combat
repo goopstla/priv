@@ -43,6 +43,20 @@ local GameConfig = {
             DisplayName = "A4",
             ParryTime = 0.01,
         },
+        ["rbxassetid://15646692581"] = {
+            DisplayName = "Uppercut",
+            ParryTime = 0.1,
+        },
+        ["rbxassetid://125116436637072"] = {
+            DisplayName = "DPuni",
+            ParryTime = 0.2,
+        },
+        ["rbxassetid://93681784528387"] = {
+            DisplayName = "Rushdown",
+            HitTimes = {0.2, 0.3, 0.35, 0.4, 0.8, 1.2},
+            SpamAfterHits = true,
+            HoldDuration = 1
+        },     
 	["M1Time"] = 0.1
       },
 
@@ -64,6 +78,54 @@ local GameConfig = {
             ParryTime = 0.3
         },
 	["M1Time"] = 0.1
+      },
+      
+    ["Flame"] = {
+        ["rbxassetid://133747029070483"] = {
+            DisplayName = "Sweeps",
+            ParryTime = 0.4
+        },
+        ["rbxassetid://120136098220233"] = {
+            DisplayName = "Lasso",
+            ParryTime = 0.3
+        },
+        ["rbxassetid://139808239387508"] = {
+            DisplayName = "CinderG",
+            ParryTime = 0.01
+        },
+	["M1Time"] = 0.1
+      },
+
+    ["EMancer"] = {
+        ["rbxassetid://111514870674596"] = {
+            DisplayName = "A1",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://137089657943859"] = {
+            DisplayName = "A2",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://126534726560672"] = {
+            DisplayName = "A3",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://107063867380896"] = {
+            DisplayName = "A4",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://98004378743040"] = {
+            DisplayName = "Impale",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://123688714987883"] = {
+            DisplayName = "Tempest",
+            ParryTime = 0.4
+        },
+        ["rbxassetid://124324202966741"] = {
+            DisplayName = "SRide",
+            ParryTime = 0.01
+        },
+    ["M1Time"] = 0.01
       },
 
     ["CSword"] = {
@@ -330,15 +392,15 @@ local GameConfig = {
             ParryTime = 0.01
         },
         ["rbxassetid://128336212609166"] = {
-            DisplayName = "Att",
+            DisplayName = "AAtt",
             HitTimes = {0.01, 0.4, 0.6, 1, 1.2}
         },
         ["rbxassetid://102548047352123"] = {
-            DisplayName = "Magnitude",
+            DisplayName = "AMagnitude",
             HitTimes = {0.01, 0.3, 0.6, 1.10}
         },
         ["rbxassetid://100267401447618"] = {
-            DisplayName = "Mass",
+            DisplayName = "AMass",
             HitTimes = {0.01, 0.1, 0.5}
         },
 	["M1Time"] = 0.02
@@ -471,20 +533,32 @@ local GameConfig = {
       },
 
     ["Katana"] = {
-        ["rbxassetid://103208136760052"] = {
+        ["rbxassetid://111276731769963"] = {
             DisplayName = "A1",
             ParryTime = 0.01
         },
-        ["rbxassetid://131647595371803"] = {
+        ["rbxassetid://103208136760052"] = {
             DisplayName = "A2",
             ParryTime = 0.01
         },
-        ["rbxassetid://111276731769963"] = {
+        ["rbxassetid://131647595371803"] = {
             DisplayName = "A3",
             ParryTime = 0.01
         },
         ["rbxassetid://106514784572731"] = {
             DisplayName = "A4",
+            ParryTime = 0.01
+        },
+        ["rbxassetid://132858121462404"] = {
+            DisplayName = "PetalStrike",
+            ParryTime = 0.2
+        },
+        ["rbxassetid://72450223950579"] = {
+            DisplayName = "RSteps",
+            HitTimes = {0.3, 0.6, 0.9, 1.2, 1.5}
+        },
+        ["rbxassetid://103800826099930"] = {
+            DisplayName = "CovertSlash",
             ParryTime = 0.01
         },
     ["M1Time"] = 0.01
@@ -497,12 +571,8 @@ local IgnoreIds = {
     111690067265950, 81147022531650, 115085822212678, 79125089919347, 17046610721, 112407385491956, 133771450008161, 133759823052743, 125609599992470, 130005241814778, 117730693457109,
     119131342678806, 77724736658920, 120147427925872, 17716158788, 113550502328598, 97626480164991, 113973798800257, 104919213663824, 126623509290798,77293284942861, 92901201880967,
     87202002576369, 76440441206653, 123468470138341, 79925415351085, 129869051098265, 131566757788752, 110183522012564, 76476520118038, 118616364588182, 116666854779054, 91245420182026,
-    86285554435823, 15646692581, 73531506505217, 101156982990361, 16360636442, 18824236306, 130974714254788, 18824255332, 82469624007895, 132013637125794, 96799101267483, 89797430940395,
-    79654710707728, 133314501284966,
-
-
-    
-
+    86285554435823, 73531506505217, 101156982990361, 16360636442, 18824236306, 130974714254788, 18824255332, 82469624007895, 132013637125794, 96799101267483, 89797430940395,
+    79654710707728, 133314501284966, 85054256076742, 110373996819729, 114304829851201, 83129657347711, 18891487610,
 }
 
 
