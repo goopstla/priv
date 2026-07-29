@@ -41,15 +41,15 @@ local GameConfig = {
         },
         ["rbxassetid://85905331917734"] = {
             DisplayName = "A4",
-            ParryTime = 0.01,
+            ParryTime = 0.01
         },
         ["rbxassetid://15646692581"] = {
             DisplayName = "Uppercut",
-            ParryTime = 0.1,
+            ParryTime = 0.1
         },
         ["rbxassetid://125116436637072"] = {
             DisplayName = "DPuni",
-            ParryTime = 0.2,
+            ParryTime = 0.2
         },
         ["rbxassetid://93681784528387"] = {
             DisplayName = "Rushdown",
@@ -59,9 +59,11 @@ local GameConfig = {
         },
         ["rbxassetid://86365005464462"] = {
             DisplayName = "3Hook",
-            HitTimes = {0.1, 0.2, 0.3},
-            SpamAfterHits = true,
-            HoldDuration = 1
+            HitTimes = {0.1, 0.2, 0.5}
+        },
+        ["rbxassetid://133347600466562"] = {
+            DisplayName = "ADescent",
+            ParryTime = 0.5
         },
 	["M1Time"] = 0.1
       },
@@ -89,7 +91,7 @@ local GameConfig = {
     ["Flame"] = {
         ["rbxassetid://133747029070483"] = {
             DisplayName = "Sweeps",
-            ParryTime = 0.4
+            ParryTime = 0.1
         },
         ["rbxassetid://120136098220233"] = {
             DisplayName = "Lasso",
@@ -216,8 +218,8 @@ local GameConfig = {
             ParryTime = 0.01
         },
         ["rbxassetid://109125767311650"] = {
-            DisplayName = "SBlitz1",
-            ParryTime = 0.01
+            DisplayName = "SBlitz",
+            HitTimes = {0.08, 0.1, 0.3, 0.7, 0.85, 0.95, 1.1, 1.3, 1.5, 1.6, 1.8, 2, 2.7, 3.3}
         },
     ["rbxassetid://101170052197628"] = {
             DisplayName = "Barrage",
@@ -249,13 +251,7 @@ local GameConfig = {
         },
         ["rbxassetid://18824534812"] = {
             DisplayName = "CBind",
-            ParryTime = 0.60
-        },
-        ["rbxassetid://107526883789772"] = {
-            DisplayName = "LFire",
-            HitTimes = {0.3, 0.70, 1, 1.10, 1.30},
-            SpamAfterHits = true,
-            HoldDuration = 2
+            ParryTime = 0.4
         },
 	["M1Time"] = 0.02
       },
@@ -574,7 +570,8 @@ local IgnoreIds = {
     119131342678806, 77724736658920, 120147427925872, 17716158788, 113550502328598, 97626480164991, 113973798800257, 104919213663824, 126623509290798,77293284942861, 92901201880967,
     87202002576369, 76440441206653, 123468470138341, 79925415351085, 129869051098265, 131566757788752, 110183522012564, 76476520118038, 118616364588182, 116666854779054, 91245420182026,
     86285554435823, 73531506505217, 101156982990361, 16360636442, 18824236306, 130974714254788, 18824255332, 82469624007895, 132013637125794, 96799101267483, 89797430940395,
-    79654710707728, 133314501284966, 85054256076742, 110373996819729, 114304829851201, 83129657347711, 18891487610,
+    79654710707728, 133314501284966, 85054256076742, 110373996819729, 114304829851201, 83129657347711, 18891487610, 109725601715015, 93254730596804, 18954700498, 18954700498,
+    117600331825669, 18954703278,
 }
 
 
@@ -1917,8 +1914,12 @@ local function EvaluateAnimation(anim, character, localCharacter, localRoot, tar
         return
     end
     
-    -- DIRECTION CHECKS
-    if not CheckAnimationDirection(character, localCharacter, localRoot, targetRoot, attackConfig) then return end
+    -- DIRECTION CHECKS (Bypassed entirely if both target-facing and local-facing options are enabled)
+    local bypassDirections = (TargetFacingToggle and TargetFacingToggle.Get() == true) and (LocalFacingToggle and LocalFacingToggle.Get() == true)
+    
+    if not bypassDirections then
+        if not CheckAnimationDirection(character, localCharacter, localRoot, targetRoot, attackConfig) then return end
+    end
     
     if regData.RandomNum > ProbabilityToParry then
         regData.Processed = true
