@@ -375,19 +375,19 @@ local GameConfig = {
     ["GCoil"] = {
         ["rbxassetid://131027801153793"] = {
             DisplayName = "A1",
-            ParryTime = 0.02
+            ParryTime = 0.0
         },
         ["rbxassetid://125187215797634"] = {
             DisplayName = "A2",
-            ParryTime = 0.02
+            ParryTime = 0.03
         },
         ["rbxassetid://117286112044184"] = {
             DisplayName = "A3",
-            ParryTime = 0.02
+            ParryTime = 0.03
         },
         ["rbxassetid://140577210819778"] = {
             DisplayName = "A4",
-            ParryTime = 0.02
+            ParryTime = 0.03
         },
         ["rbxassetid://103700377933107"] = {
             DisplayName = "AUppercut",
@@ -1914,12 +1914,8 @@ local function EvaluateAnimation(anim, character, localCharacter, localRoot, tar
         return
     end
     
-    -- DIRECTION CHECKS (Bypassed entirely if both target-facing and local-facing options are enabled)
-    local bypassDirections = (TargetFacingToggle and TargetFacingToggle.Get() == true) and (LocalFacingToggle and LocalFacingToggle.Get() == true)
-    
-    if not bypassDirections then
-        if not CheckAnimationDirection(character, localCharacter, localRoot, targetRoot, attackConfig) then return end
-    end
+    -- DIRECTION CHECKS
+    if not CheckAnimationDirection(character, localCharacter, localRoot, targetRoot, attackConfig) then return end
     
     if regData.RandomNum > ProbabilityToParry then
         regData.Processed = true
