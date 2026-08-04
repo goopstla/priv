@@ -3,6 +3,19 @@ local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
+local function ScanFolder(targetFolder)
+    for _, obj in ipairs(targetFolder:GetChildren()) do
+        if obj:IsA("Model") and obj ~= LocalPlayer.Character then
+            -- Check if it has a humanoid and is an enemy/valid target
+            local humanoid = obj:FindFirstChildOfClass("Humanoid")
+            if humanoid and humanoid.Health > 0 then
+                -- Perform your check/raycast/animation tracking here
+                print("Checking target: " .. obj.Name)
+            end
+        end
+    end
+end
+
 local UIS = game:GetService("UserInputService")
 local SelectedFolder = nil
 local CycleKeybind = Enum.KeyCode.X
@@ -30,11 +43,11 @@ local GameConfig = {
     ["Gojo"] = {
         ["rbxassetid://127851700400958"] = {
             DisplayName = "Attack_1",
-            ParryTime = 0.1
+            ParryTime = 0.18
         },
         ["rbxassetid://72548435296350"] = {
             DisplayName = "Attack_2",
-            ParryTime = 0.1
+            ParryTime = 0.18
         },
         ["rbxassetid://84547415708554"] = {
             DisplayName = "Attack_3",
@@ -43,6 +56,30 @@ local GameConfig = {
         ["rbxassetid://92966188946988"] = {
             DisplayName = "Downslam",
             ParryTime = 0.1
+        },
+        ["rbxassetid://137865634124104"] = {
+            DisplayName = "Blue",
+            ParryTime = 0.4
+        },
+        ["rbxassetid://137654778575373"] = {
+            DisplayName = "Red",
+            ParryTime = 0.1,
+            UseDodge = true
+        },
+        ["rbxassetid://99920923658527"] = {
+            DisplayName = "SRed",
+            ParryTime = 0.1,
+            UseDodge = true
+        },
+        ["rbxassetid://95421145178968"] = {
+            DisplayName = "Kicks",
+            ParryTime = 0.01,
+            UseDodge = true
+        },
+        ["rbxassetid://104749346956269"] = {
+            DisplayName = "2Kicks",
+            ParryTime = 0.2,
+            UseDodge = true
         },
         ["M1Time"] = 0.1
     },
@@ -64,8 +101,20 @@ local GameConfig = {
             DisplayName = "Attack_4",
             ParryTime = 0.1
         },
+        ["rbxassetid://77200218033775"] = {
+            DisplayName = "Strikes",
+            ParryTime = 0.4
+        },
+        ["rbxassetid://124901309160375"] = {
+            DisplayName = "CBlow",
+            ParryTime = 0.35
+        },
+        ["rbxassetid://100962226150441"] = {
+            DisplayName = "DFist",
+            ParryTime = 0.3
+        },
         ["M1Time"] = 0.1
-    },
+    }
 
 
     
@@ -73,18 +122,20 @@ local GameConfig = {
 
 local IgnoreIds = {
     120133391090244, 96489184596023, 117941450906936, 77705898607209, 134343219970072, 126572575938378, 97446412066176, 138196552148011, 82881042739459,
-    140491244934559, 134581973800784, 117223862448096, 75203303352791,
+    140491244934559, 134581973800784, 117223862448096, 75203303352791, 72509133503569
 }
 
 
 local ParriedAnimation = {
-"rbxassetid://112519964343154", "rbxassetid://140381676724931", "rbxassetid://103513893010999", "rbxassetid://85003123457049"
+"rbxassetid://140381676724931", "rbxassetid://103513893010999", "rbxassetid://85003123457049", "rbxassetid://111214152450580", 
+"rbxassetid://103513893010999", "rbxassetid://103513893010999", "rbxassetid://103513893010999", "rbxassetid://103513893010999",
 }
 
 
 local StunnedAnimation = {"rbxassetid://9598562590", "rbxassetid://9598537410", "rbxassetid://9598551746"}
 local ParryingAnimation = {"rbxassetid://112519964343154"}
 local ParryFailed = {"rbxassetid://85382723645632", "rbxassetid://111902759344637", "rbxassetid://80843134889167"}
+
 
 
 local AutoParryRange = 10
@@ -99,28 +150,29 @@ local BlockHoldTime = 0.07
 -- ==========================================
 local FlattenedConfig = {}
 
-for styleName, assets in pairs(GameConfig) do
-
-    for assetId, data in pairs(assets) do
-        if assetId == "M1Time" then continue end
-        if assets["M1Time"] then end 
-        local flatData = table.clone(data) or {}  
-        flatData.Style = styleName
-        if data.DisplayName ~= "M2" and assets["M1Time"] then  
-            flatData.ReactionTime = assets["M1Time"]
-        elseif not data.ReactionTime then 
-            flatData.DefaultReactionTime = DefaultReactionTime
-        else 
-            flatData.ReactionTime = data.ReactionTime
+if type(GameConfig) == "table" then
+    for styleName, assets in pairs(GameConfig) do
+        for assetId, data in pairs(assets) do
+            if assetId == "M1Time" then continue end
+            if assets["M1Time"] then end 
+            local flatData = table.clone(data) or {}  
+            flatData.Style = styleName
+            if data.DisplayName ~= "M2" and assets["M1Time"] then  
+                flatData.ReactionTime = assets["M1Time"]
+            elseif not data.ReactionTime then 
+                flatData.DefaultReactionTime = DefaultReactionTime
+            else 
+                flatData.ReactionTime = data.ReactionTime
+            end
+            
+            FlattenedConfig[assetId] = flatData
         end
-        
-        FlattenedConfig[assetId] = flatData
     end
+    GameConfig = FlattenedConfig
 end
 
-GameConfig = FlattenedConfig
-
 local AnimationIdSliders = {}
+local IncludeLocalCharacter = false
 
 local function GetFoldersFromPaths(pathList)
     if not pathList or type(pathList) ~= "table" then return {} end
@@ -178,7 +230,6 @@ local function GetAllCharactersInFolder()
         return {} 
     end 
 
-    -- Ensure SelectedFolder is treated as a table
     local pathsToProcess = type(SelectedFolder) == "table" and SelectedFolder or {SelectedFolder}
     local TargetFolders = GetFoldersFromPaths(pathsToProcess)
     
@@ -189,18 +240,47 @@ local function GetAllCharactersInFolder()
 
     local Characters = {}
     for _, TargetFolder in ipairs(TargetFolders) do
-        for _, Character in ipairs(TargetFolder:GetChildren()) do  
-            -- Checks if children are models with a Humanoid (supports players/dummies nested inside models)
-            if Character.ClassName == "Model" and Character:FindFirstChildWhichIsA("Humanoid") then
+        for _, obj in ipairs(TargetFolder:GetChildren()) do
+            if obj:IsA("Model") then
                 if not IncludeLocalCharacter then 
-                    if Character == game.Players.LocalPlayer.Character then continue end 
+                    if obj == LocalPlayer.Character or obj.Name == LocalPlayer.Name or obj.Name == "DisfiguredSheep" then 
+                        continue 
+                    end 
                 end
-                table.insert(Characters, Character)
+                
+                local humanoid = obj:FindFirstChildOfClass("Humanoid")
+                local rootPart = obj:FindFirstChild("HumanoidRootPart")
+                
+                if humanoid and rootPart and humanoid.Health > 0 then
+                    table.insert(Characters, obj)
+                end
             end
         end
     end
 
     return Characters
+end
+
+local function GetValidCharacters(parentContainer)
+    local validCharacters = {}
+    
+    -- Use GetDescendants or GetChildren depending on how deep the folder goes
+    for _, obj in ipairs(parentContainer:GetChildren()) do
+        if obj:IsA("Model") then
+            -- Skip the local player's character entirely
+            if obj ~= LocalPlayer.Character then
+                local humanoid = obj:FindFirstChildOfClass("Humanoid")
+                local rootPart = obj:FindFirstChild("HumanoidRootPart")
+                
+                -- Ensure it's a living character with a humanoid and root part
+                if humanoid and rootPart and humanoid.Health > 0 then
+                    table.insert(validCharacters, obj)
+                end
+            end
+        end
+    end
+    
+    return validCharacters
 end
 
 local function SetClipboardLoggedCache()
@@ -212,8 +292,8 @@ local function SetClipboardLoggedCache()
 
     local ids = {}
     for i = 1, totalItems do
-        -- Extract only the numbers from the asset ID string
-        local numericId = tostring(AnimationsLoggedOrder[i]):match("%d+")
+        local item = AnimationsLoggedOrder[i]
+        local numericId = item and tostring(item):match("%d+")
         if numericId then
             table.insert(ids, numericId)
         end
@@ -300,8 +380,9 @@ end
 --LiteGrabber(game.ReplicatedStorage.Assets.Anims.Weapon.Spear)
 
 local function UpdateSliders(OldReactionTime)
-    for animationId, Info in (GameConfig) do 
-        if AnimationIdSliders[animationId] then
+    if type(GameConfig) ~= "table" then return end
+    for animationId, Info in pairs(GameConfig) do 
+        if AnimationIdSliders[animationId] and type(Info) == "table" then
             Info.DefaultReactionTime = DefaultReactionTime
             local ReactionTime = Info.M1Time or Info.ReactionTime or Info.DefaultReactionTime
             AnimationIdSliders[animationId]:Set(ReactionTime)            
@@ -368,7 +449,9 @@ local YouFacingTarget = nil
 local LoggedText = ClipboardSection:Label("Logged Ids: ?")
 local IgnoredText = ClipboardSection:Label("Ignored Ids: ?")
 
-local function UpdateTargetPoolSection(Tab)
+local UpdateTargetPoolSection
+
+UpdateTargetPoolSection = function(Tab)
     local characters = GetAllCharactersInFolder() 
     local names = {}
     
@@ -539,7 +622,7 @@ local function ToggleDamageLogger(state)
     if not state then
         if connection then
             connection:Disconnect()
-            connection = nil 
+            connection = nil
         end
         print("[Logger] Heartbeat damage logger DISABLED.")
         return
@@ -553,48 +636,47 @@ local function ToggleDamageLogger(state)
         local hum = char and char:FindFirstChild("Humanoid")
         if not hum then return end 
 
-        if not lastCharacter or (char ~= lastCharacter) then
-            lastCharacter = char
+        if not previousHealth then
             previousHealth = hum.Health
+            lastCharacter = char
+            return
         end
-        
+
         local currentHealth = hum.Health
-        
-        -- Debug print every frame if health changes at all
-        if currentHealth ~= previousHealth then
-            print(string.format("[DEBUG] Health changed! Old: %.1f -> New: %.1f", previousHealth, currentHealth))
-        end
-        
         if currentHealth < previousHealth then
             local damageTaken = previousHealth - currentHealth
-            warn(string.format("[HIT DETECTED] Took %d damage! Scanning target pool...", damageTaken))
             
-            local charactersToCheck = (#TargetCharacters > 0) and TargetCharacters or GetAllCharactersInFolder()
-            print("[DEBUG] Characters to check count:", #charactersToCheck)
+            local charactersToScan = {}
+            if TargetCharacters and type(TargetCharacters) == "table" then
+                charactersToScan = TargetCharacters
+            elseif typeof(GetAllCharactersInFolder) == "function" then
+                local res = GetAllCharactersInFolder()
+                if type(res) == "table" then
+                    charactersToScan = res
+                end
+            end
             
-            if #charactersToCheck > 0 then
-                for _, targetChar in ipairs(charactersToCheck) do
+            for _, targetChar in ipairs(charactersToScan) do
+                if targetChar ~= char then
                     local activeAnimations = AnimationTracker:Update(targetChar) or {}
-                    print(string.format("[DEBUG] Target %s has %d active animations", targetChar.Name, #activeAnimations))
                     
                     for _, anim in ipairs(activeAnimations) do
-                        local assetId = tostring(anim.AnimationId or "Unknown")
+                        if not anim.AnimationId then continue end 
+                        local assetId = tostring(anim.AnimationId)
                         local poolData = GameConfig[assetId]
-                        
                         warn(string.format(
-                            "[HIT LOGGED] DMG: %d | Anim: %s (%s) | Time: %.3f", 
+                            "[HIT] %d DMG | Target: %s | Anim: %s (%s) %s | Frame Time: %.3f", 
                             damageTaken, 
+                            targetChar.Name,
                             poolData and poolData.DisplayName or anim.Name or "Unknown",
                             assetId, 
+                            poolData and poolData.Style or "",
                             anim.TimePosition or 0
                         ))
                     end
                 end
-            else
-                print("[DEBUG] No characters found in pool to scan!")
             end
         end
-        
         previousHealth = currentHealth
     end)
 end
@@ -680,6 +762,7 @@ local function CreateFilesSection()
     end)
 end
 
+
 CreateFoldersSection()
 CreateAPSection()
 CreateGroupSliders()
@@ -700,7 +783,7 @@ local lastParryAt = 0
 
 local function GetLocalHRP()
     local localChar = LocalPlayer.Character
-    local HRP = localChar:FindFirstChild("HumanoidRootPart")
+    local HRP = localChar and localChar:FindFirstChild("HumanoidRootPart")
     if not HRP then return nil end 
     return HRP
 end
@@ -791,7 +874,6 @@ local AnimationTracker = AnimationTracker.new(IgnoreIds)
 local LocalTracker = AnimationTracker.new(IgnoreIds)
 
 local DamageLogs = false
-local IncludeLocalCharacter = false
 
 local lastAnimationCheck = 0
 local connection = nil
@@ -842,6 +924,14 @@ local CurrentParryState = ParryState.IDLE
 -- ==========================================
 -- Parry Core Logic
 -- ==========================================
+
+local function ProcessParryDetection()
+    -- You can pass Workspace or any arbitrary folder here safely
+    for _, enemyModel in ipairs(GetValidCharacters(workspace)) do
+        -- Perform your check/animation/hitbox detection on enemyModel
+        print("Checking valid target:", enemyModel.Name)
+    end
+end
 
 
 local function GetHeightMultiplierForCharacter(TargetCharacter)
@@ -937,13 +1027,12 @@ end
 
 --                  ==[Input State]==
 -- Local F keypress
+-- Update your OnInputF function to force an update check immediately:
 local function OnInputF()
-
     if CurrentParryState == ParryState.IDLE then
         InputRegisteredTime = os.clock()
+        LocalTracker:Update(LocalPlayer.Character) -- Force immediate update
         TransitionToState(ParryState.INPUT_PENDING)
-    else
-    --    print("F was pressed while machine wasnt idle")
     end
 end
 
@@ -1012,6 +1101,8 @@ local function DebugParry()
         ))
     end
 end
+
+
 
 -- Parrying animation detected
 local function OnParryingAnimationSuccess()
@@ -1132,8 +1223,20 @@ local function ParryTask()
 
         local ActiveAnims = GetActiveAnimationsForCharacterAsDictionary(LocalPlayer.Character)
        -- print(ActiveAnims)
-        
-        if ActiveAnims and ActiveAnims[ParryingAnimation[1]] then  
+       
+        local targetIdStr = tostring(ParryingAnimation[1])
+        local foundMatch = false
+
+        if ActiveAnims then
+            for animId, _ in pairs(ActiveAnims) do
+                if animId and tostring(animId):match("%d+") == targetIdStr:match("%d+") then
+                    foundMatch = true
+                    break
+                end
+            end
+        end
+
+        if foundMatch then  
             OnParryingAnimationSuccess()
         end
        
@@ -1157,8 +1260,8 @@ local function ParryTask()
         end
 
         local AnimationStartTime = LastPendingRegData.StartTime -- Absolute timestamp (os.clock)
-        local BlockStart = LastPendingRegData.BlockStart       -- Absolute timestamp (os.clock)
-        local BlockExpire = LastPendingRegData.BlockExpire     -- Absolute timestamp (os.clock)
+        local BlockStart = LastPendingRegData.BlockStart      -- Absolute timestamp (os.clock)
+        local BlockExpire = LastPendingRegData.BlockExpire    -- Absolute timestamp (os.clock)
 
         -- Relative Offsets (How far into the animation the window is)
         local RelativeBlockStart = BlockStart - AnimationStartTime   -- e.g., 0.300s
@@ -1341,11 +1444,6 @@ local function CheckAnimationDirection(character, localCharacter, localRoot, tar
         return true
     end
     
-    -- Bypasses direction requirements if they are within your current AutoParryRange
-    if distance <= AutoParryRange then
-        return true
-    end
-    
     local direction = (targetRoot.Position - localRoot.Position).Unit
     local isHeavy = attackConfig.DisplayName == "M2" or attackConfig.DisplayName == "Heavy" or attackConfig.Heavy
     
@@ -1360,43 +1458,29 @@ end
 local function ExecuteParry(regData, attackConfig)
     local isHeavy = attackConfig.DisplayName == "M2" or attackConfig.DisplayName == "Heavy" or attackConfig.Heavy
 
-    if attackConfig.Jump then 
-        task.spawn(function()
-            keypress(32)
-            task.wait(.06)
-            keyrelease(32)                      
-        end)
-        DodgeLockoutEnd = os.clock() + 0.2
-    elseif isHeavy and AutoDodgeToggle.Get() then
-        Dodge()
-        DodgeLockoutEnd = os.clock() + 0.2
+    -- Force dodge if UseDodge is true or if it's a heavy attack with auto-dodge enabled
+    local isDodgeEnabled = type(AutoDodgeToggle) == "boolean" and AutoDodgeToggle 
+        or (type(AutoDodgeToggle) == "table" and (AutoDodgeToggle.Value or AutoDodgeToggle.Enabled or AutoDodgeToggle.Get and AutoDodgeToggle.Get()))
+        or true
+
+    if attackConfig.UseDodge or (isHeavy and isDodgeEnabled) then
+        Dodge()            
+        print(string.format("Dodge triggered by [%s | %s]", attackConfig.Style, attackConfig.DisplayName))
+        
+        if LastPendingRegData == regData then
+            regData.DidALoop = false
+        else
+            LastPendingRegData = regData
+        end
     else 
+        -- Standard block/parry fallback
         if LastPendingRegData ~= regData then
             LastPendingRegData = regData
-            
-            -- Check if this specific move uses HoldDuration globally
-            if attackConfig.HoldDuration and not attackConfig.SpamAfterHits then
-                task.spawn(function()
-                    local endTime = os.clock() + attackConfig.HoldDuration
-                    while os.clock() < endTime do
-                        if AutoParryToggle.Get() == true then
-                            if ismouse1pressed() then mouse2click() end
-                            keypress(ParryKey)
-                        end
-                        task.wait(0.05)
-                    end
-                    keyrelease(ParryKey)
-                end)
-            else
-                BlockStart(LastPendingRegData.BlockStart)
-            end
-            
+            BlockStart(window.Start)
         elseif LastPendingRegData == regData then
             if regData.DidALoop then  
                 regData.DidALoop = false
-                if not attackConfig.HoldDuration then
-                    BlockStart(regData.BlockStart)
-                end
+                BlockStart(window.Start)
             end
         end
     end
@@ -1444,14 +1528,23 @@ local function EvaluateAnimation(anim, character, localCharacter, localRoot, tar
         return
     end
     
-    -- MULTI-HIT / SPAM PARRY EXECUTION
     for index, window in ipairs(regData.Windows) do
-        if not window.Parried and now >= window.Start and now <= window.Expire then
+        local targetTime = attackConfig.UseDodge and (regData.StartTime + (attackConfig.ParryTime or 0.01)) or window.Start
+        
+        if not window.Parried and now >= targetTime then
             window.Parried = true
             LastPendingRegData = regData
             
-            -- Check if spamming/holding is enabled for this attack
-            if attackConfig.SpamAfterHits then
+            if attackConfig.UseDodge then
+                -- 1. Press your chosen custom key (e.g., Enum.KeyCode.Q, Enum.KeyCode.E, etc.)
+                local customKey = attackConfig.CustomKey or Enum.KeyCode.Q
+                keypress(customKey)
+                task.wait(0.01) -- Short delay between pressing the key and dodging
+                keyrelease(customKey)
+                
+                -- 2. Execute the dodge
+                DirectionalDodge(Enum.KeyCode.W)
+            elseif attackConfig.SpamAfterHits then
                 task.spawn(function()
                     local endTime = os.clock() + (attackConfig.HoldDuration or 0.3)
                     local interval = attackConfig.SpamInterval or 0.01
@@ -1500,6 +1593,8 @@ local function EvaluateParryTriggers()
 
     -- CHARACTER ITERATION
     for _, character in ipairs(TargetCharacters) do
+        -- Double guard to skip localplayer if they somehow snuck into TargetCharacters
+        if character == localCharacter then continue end
         EvaluateCharacter(character, localCharacter, localRoot, currentActiveIds)
     end
 
@@ -1521,6 +1616,13 @@ end
 local function ProcessEspAndLogging()
     for i = #TargetCharacters, 1, -1 do
         local character = TargetCharacters[i]
+        
+        -- Prevent processing local character entirely
+        if character == LocalPlayer.Character then
+            table.remove(TargetCharacters, i)
+            continue
+        end
+
         local tracker = EspTrackers[character]
         
         if tracker and not tracker.ChangeText then 
@@ -1593,6 +1695,11 @@ local function UpdateTargetCharacters(charactersList)
 
     -- Populate new targets
     for _, character in charactersList do
+        -- Strict block against local character
+        if not IncludeLocalCharacter and character == LocalPlayer.Character then 
+            continue 
+        end
+
         table.insert(TargetCharacters, character)
         
         -- Apply ESP if a HumanoidRootPart exists
@@ -1622,7 +1729,7 @@ function CycleEvent()
 
     for _, char in ipairs(allCharacters) do
         -- Prevent the script from targeting yourself
-        if char == localCharacter then continue end 
+        if not IncludeLocalCharacter and char == localCharacter then continue end 
 
         local targetRoot = char:FindFirstChild("HumanoidRootPart")
         if targetRoot then
