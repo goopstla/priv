@@ -42,20 +42,20 @@ local GameConfig = {
 
     ["Gojo"] = {
         ["rbxassetid://127851700400958"] = {
-            DisplayName = "Attack_1",
+            DisplayName = "Attack1",
             ParryTime = 0.08
         },
         ["rbxassetid://72548435296350"] = {
-            DisplayName = "Attack_2",
+            DisplayName = "Attack2",
             ParryTime = 0.09
         },
         ["rbxassetid://84547415708554"] = {
-            DisplayName = "Attack_3",
+            DisplayName = "Attack3",
             ParryTime = 0.09
         },
         ["rbxassetid://92966188946988"] = {
             DisplayName = "Downslam",
-            ParryTime = 0.1
+            ParryTime = 0.09
         },
         ["rbxassetid://137865634124104"] = {
             DisplayName = "Blue",
@@ -81,24 +81,24 @@ local GameConfig = {
             ParryTime = 0.2,
             UseDodge = true
         },
-        ["M1Time"] = 0.1
+        ["M1Time"] = 0.09
     },
 
     ["Yuji"] = {
         ["rbxassetid://95295463826732"] = {
-            DisplayName = "Attack_1",
+            DisplayName = "Attack1",
             ParryTime = 0.09
         },
         ["rbxassetid://105077924973072"] = {
-            DisplayName = "Attack_2",
+            DisplayName = "Attack2",
             ParryTime = 0.09
         },
         ["rbxassetid://124862357369335"] = {
-            DisplayName = "Attack_3",
+            DisplayName = "Attack3",
             ParryTime = 0.09
         },
         ["rbxassetid://81630213087988"] = {
-            DisplayName = "Attack_4",
+            DisplayName = "Attack4",
             ParryTime = 0.09
         },
         ["rbxassetid://77200218033775"] = {
@@ -114,8 +114,228 @@ local GameConfig = {
             DisplayName = "DFist",
             ParryTime = 0.3
         },
+        ["M1Time"] = 0.09
+    },
+
+    ["Hakari"] = {
+        ["rbxassetid://94588892125071"] = {
+            DisplayName = "Attack1",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://97868312130612"] = {
+            DisplayName = "Attack2",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://140588454098230"] = {
+            DisplayName = "Attack3",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://138826758216894"] = {
+            DisplayName = "Attack4",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://82541714192027"] = {
+            DisplayName = "Ball",
+            ParryTime = 0.34,
+            HoldBlockDuration = 0.8
+        },
+        ["rbxassetid://72063002791216"] = {
+            DisplayName = "Doors",
+            ParryTime = 0.35
+        },
+        ["rbxassetid://72467492674240"] = {
+            DisplayName = "REnergy",
+            ParryTime = 0.3
+        },
+        ["rbxassetid://108123475959041"] = {
+            DisplayName = "FBreaker",
+            ParryTime = 0.3
+        },
         ["M1Time"] = 0.1
-    }
+    },
+    ["Megumi"] = {
+        ["rbxassetid://75337033003776"] = {
+            DisplayName = "Attack1",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://138489871864252"] = {
+            DisplayName = "Attack2",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://96185406489877"] = {
+            DisplayName = "Attack3",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://105287938257399"] = {
+            DisplayName = "Attack4",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://132653290201368"] = {
+            DisplayName = "Rabbits",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://116432619539029"] = {
+            DisplayName = "Toad",
+            ParryTime = 0.09
+        },
+    },
+    ["BigRaga"] = {
+        ["rbxassetid://109718372214725"] = {
+            DisplayName = "Attack1",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://121800365664070"] = {
+            DisplayName = "Attack2",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://96513213736303"] = {
+            DisplayName = "Attack3",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://79037514387169"] = {
+            DisplayName = "Attack4",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://114797198964940"] = {
+            DisplayName = "DSlam",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://85024950165903"] = {
+            DisplayName = "Earthquake",
+            ParryTime = 0.09
+        },
+    },
+    ["Mahito"] = {
+        ["rbxassetid://126277739156443"] = {
+            DisplayName = "Attack1",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://99710481887795"] = {
+            DisplayName = "Attack2",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://121322029260156"] = {
+            DisplayName = "Attack3",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://122655618588472"] = {
+            DisplayName = "Attack4",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://79568627671998"] = {
+            DisplayName = "BAttack1",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://105870773841535"] = {
+            DisplayName = "BAttack2",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://130659585624615"] = {
+            DisplayName = "BAttack3",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://138626478088332"] = {
+            DisplayName = "BAttack4",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://98365018553171"] = {
+            DisplayName = "HAttack1",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://80150988150906"] = {
+            DisplayName = "HAttack2",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://86918383671100"] = {
+            DisplayName = "HAttack3",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://85887300265206"] = {
+            DisplayName = "HAttack4",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://114562626498918"] = {
+            DisplayName = "HDownslam",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://103493656287292"] = {
+            DisplayName = "Stockpile",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://89092734635186"] = {
+            DisplayName = "SFire",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://72475960800126"] = {
+            DisplayName = "FStrike",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://108319980293313"] = {
+            DisplayName = "BRepel",
+            ParryTime = 0.09
+        },
+        ["rbxassetid://134461702265323"] = {
+            DisplayName = "BStrike",
+            ParryTime = 0.09
+        },
+    },
+    
+    ["Choso"] = {
+        ["rbxassetid://119042572747325"] = {
+            DisplayName = "Attack1",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://127171275866632"] = {
+            DisplayName = "PBlood",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://84039122607068"] = {
+            DisplayName = "FRScale",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://100446064103831"] = {
+            DisplayName = "BEdge",
+            ParryTime = 0.08
+            UseDodge = true
+        },
+        ["M1Time"] = 0.09
+    },
+
+    ["Todo"] = {
+        ["rbxassetid://96327114254575"] = {
+            DisplayName = "Attack1",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://107029561762376"] = {
+            DisplayName = "Attack2",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://117831239064143"] = {
+            DisplayName = "Attack3",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://94720627091769"] = {
+            DisplayName = "SKick",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://136536827155962"] = {
+            DisplayName = "BForce",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://111720035828971"] = {
+            DisplayName = "Pebble",
+            ParryTime = 0.08
+            HoldBlockDuration = 1
+        },
+        ["rbxassetid://121343824534765"] = {
+            DisplayName = "EDrop",
+            ParryTime = 0.08
+            HoldBlockDuration = 1
+        },
+        
+        ["M1Time"] = 0.09
+    },
+
 
 
     
@@ -123,7 +343,7 @@ local GameConfig = {
 
 local IgnoreIds = {
     120133391090244, 96489184596023, 117941450906936, 77705898607209, 134343219970072, 126572575938378, 97446412066176, 138196552148011, 82881042739459,
-    140491244934559, 134581973800784, 117223862448096, 75203303352791, 72509133503569
+    140491244934559, 134581973800784, 117223862448096, 75203303352791, 72509133503569, 81112033595734, 100532748201417, 127843796051633, 17579003479
 }
 
 
@@ -134,7 +354,7 @@ local ParriedAnimation = {
 
 
 local StunnedAnimation = {"rbxassetid://9598562590", "rbxassetid://9598537410", "rbxassetid://9598551746"}
-local ParryingAnimation = {"rbxassetid://112519964343154"}
+local ParryingAnimation = {"rbxassetid://101865783312435"}
 local ParryFailed = {"rbxassetid://85382723645632", "rbxassetid://111902759344637", "rbxassetid://80843134889167"}
 
 
@@ -934,20 +1154,6 @@ local function ProcessParryDetection()
     for _, enemyModel in ipairs(GetValidCharacters(workspace)) do
         -- Perform your check/animation/hitbox detection on enemyModel
         print("Checking valid target:", enemyModel.Name)
-    end
-end
-
-
-local function GetHeightMultiplierForCharacter(TargetCharacter)
-    local succ, data = pcall(function()
-        local stateFolder = TargetCharacter and TargetCharacter:FindFirstChild("PlayerData")    
-        return stateFolder:GetAttribute("CurrentHeight")
-    end)
-    if succ then  
-        return data
-    else
-     --   print("failed to get height")
-        return 1
     end
 end
 
