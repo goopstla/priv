@@ -43,15 +43,15 @@ local GameConfig = {
     ["Gojo"] = {
         ["rbxassetid://127851700400958"] = {
             DisplayName = "Attack_1",
-            ParryTime = 0.18
+            ParryTime = 0.08
         },
         ["rbxassetid://72548435296350"] = {
             DisplayName = "Attack_2",
-            ParryTime = 0.18
+            ParryTime = 0.09
         },
         ["rbxassetid://84547415708554"] = {
             DisplayName = "Attack_3",
-            ParryTime = 0.1
+            ParryTime = 0.09
         },
         ["rbxassetid://92966188946988"] = {
             DisplayName = "Downslam",
@@ -87,23 +87,24 @@ local GameConfig = {
     ["Yuji"] = {
         ["rbxassetid://95295463826732"] = {
             DisplayName = "Attack_1",
-            ParryTime = 0.1
+            ParryTime = 0.09
         },
         ["rbxassetid://105077924973072"] = {
             DisplayName = "Attack_2",
-            ParryTime = 0.1
+            ParryTime = 0.09
         },
         ["rbxassetid://124862357369335"] = {
             DisplayName = "Attack_3",
-            ParryTime = 0.1
+            ParryTime = 0.09
         },
         ["rbxassetid://81630213087988"] = {
             DisplayName = "Attack_4",
-            ParryTime = 0.1
+            ParryTime = 0.09
         },
         ["rbxassetid://77200218033775"] = {
             DisplayName = "Strikes",
-            ParryTime = 0.4
+            ParryTime = 0.34,
+            HoldBlockDuration = 0.8
         },
         ["rbxassetid://124901309160375"] = {
             DisplayName = "CBlow",
@@ -554,6 +555,12 @@ local function CreateGroupSliders()
                 AnimationIdSliders[animationId]:Set(currentVal)
             end
             
+            if Info.HoldBlockDuration ~= nil then
+                StyleSection:Slider("Hold Block: " .. combinedLabel, Info.HoldBlockDuration, 0.01, 0, 5, "s", function(v)
+                    Info.HoldBlockDuration = v
+                end)
+            end
+            
             if Info.HoldDuration ~= nil then
                 StyleSection:Slider("Hold Duration: " .. combinedLabel, Info.HoldDuration, 0.1, 0, 30, "s", function(v)
                     Info.HoldDuration = v > 0 and v or nil
@@ -580,7 +587,7 @@ local function CreateAPSection()
     TargetFacingYou = AP_Section:Toggle("Target facing you", false)
     YouFacingTarget = AP_Section:Toggle("You facing target", true)
     
-    local Offset = Config_Section:Slider("Parry offset", 0, 0.01, -0.1, 0.1, "s",function(v)
+    local Offset = Config_Section:Slider("Parry offset", 0, 0.001, -0.1, 0.1, "s",function(v)
         ParryOffset = v
     end)
     Offset:Set(ParryOffset)
@@ -596,10 +603,9 @@ local function CreateAPSection()
     end)
     Probability:Set(ProbabilityToParry)
 
-    local DefaultSection = Config_Tab:Section("Default Configuration", "left")
+    local DefaultSection = AP_Tab:Section("Default Configuration", "left") -- Note: Ensure your tab variable matches your code
     
-    -- Changed max value parameter from 1 to 5 here as well
-    local Time = DefaultSection:Slider("Default Reaction Time", 0.3, 0.01, 0, 5, "", function(v)
+    local Time = DefaultSection:Slider("Default Reaction Time", 0.3, 0.001, 0, 5, "", function(v)
         DefaultReactionTime = v
         UpdateSliders()
     end)
@@ -608,10 +614,8 @@ local function CreateAPSection()
 
     DefaultSection:Divider("Window")
     
-    -- Changed max value parameter from 1 to 5 here as well
-    local Window = DefaultSection:Slider("Default Parry Window", 0.3, 0.01, 0, 5, "", function(v)
+    local Window = DefaultSection:Slider("Default Parry Window", 0.3, 0.001, 0, 5, "", function(v)
         ParryWindow = v
-        --ReleaseTime = ParryWindow/2
     end)
     Window:Set(ParryWindow)
     DefaultSection:Label("This is usually constant, don't change this.")
@@ -776,7 +780,7 @@ CreateClipboardSection()
 
 -- ==========================================
 local PARRY_DISTANCE = 15 
-local PARRY_COOLDOWN = 0
+local PARRY_COOLDOWN = 0.01
 
 local activeOrbs = {}
 local lastParryAt = 0
@@ -1529,21 +1533,17 @@ local function EvaluateAnimation(anim, character, localCharacter, localRoot, tar
     end
     
     for index, window in ipairs(regData.Windows) do
+        -- Directly anchor to the absolute start time of the animation tracker + your set ParryTime
         local targetTime = attackConfig.UseDodge and (regData.StartTime + (attackConfig.ParryTime or 0.01)) or window.Start
         
         if not window.Parried and now >= targetTime then
             window.Parried = true
             LastPendingRegData = regData
             
+            -- Check if this specific attack should dodge instead
             if attackConfig.UseDodge then
-                -- 1. Press your chosen custom key (e.g., Enum.KeyCode.Q, Enum.KeyCode.E, etc.)
-                local customKey = attackConfig.CustomKey or Enum.KeyCode.Q
-                keypress(customKey)
-                task.wait(0.01) -- Short delay between pressing the key and dodging
-                keyrelease(customKey)
-                
-                -- 2. Execute the dodge
-                DirectionalDodge(Enum.KeyCode.W)
+                Dodge()
+            -- Check if spamming/holding is enabled for this attack
             elseif attackConfig.SpamAfterHits then
                 task.spawn(function()
                     local endTime = os.clock() + (attackConfig.HoldDuration or 0.3)
