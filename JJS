@@ -40,6 +40,15 @@ local GameName = "Jujutsu Shenanigans"
 
 local GameConfig = {
 
+    ["Basic"] = {
+
+        ["rbxassetid://92966188946988"] = {
+            DisplayName = "Downslam",
+            ParryTime = 0.09
+        },
+        ["M1Time"] = 0.09
+    },
+
     ["Gojo"] = {
         ["rbxassetid://127851700400958"] = {
             DisplayName = "Attack1",
@@ -51,10 +60,6 @@ local GameConfig = {
         },
         ["rbxassetid://84547415708554"] = {
             DisplayName = "Attack3",
-            ParryTime = 0.09
-        },
-        ["rbxassetid://92966188946988"] = {
-            DisplayName = "Downslam",
             ParryTime = 0.09
         },
         ["rbxassetid://137865634124104"] = {
@@ -105,7 +110,7 @@ local GameConfig = {
             DisplayName = "Strikes",
             ParryTime = 0.34,
             HoldBlockDuration = 0.8,
-            AirParryTime = 0.5
+            AirParryTime = 1
         },
         ["rbxassetid://124901309160375"] = {
             DisplayName = "CBlow",
@@ -139,20 +144,20 @@ local GameConfig = {
         },
         ["rbxassetid://82541714192027"] = {
             DisplayName = "Ball",
-            ParryTime = 0.34,
+            ParryTime = 0.4,
             HoldBlockDuration = 0.8
         },
         ["rbxassetid://72063002791216"] = {
             DisplayName = "Doors",
-            ParryTime = 0.35
+            ParryTime = 0.29
         },
         ["rbxassetid://72467492674240"] = {
             DisplayName = "REnergy",
-            ParryTime = 0.3
+            ParryTime = 0.7
         },
         ["rbxassetid://108123475959041"] = {
             DisplayName = "FBreaker",
-            ParryTime = 0.3
+            ParryTime = 0.35
         },
         ["M1Time"] = 0.1
     },
@@ -335,9 +340,48 @@ local GameConfig = {
             ParryTime = 0.08,
             HoldBlockDuration = 1
         },
-        
         ["M1Time"] = 0.09
     },
+
+    ["Higuruma"] = {
+        ["rbxassetid://133936641185614"] = {
+            DisplayName = "Attack1",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://122573730331631"] = {
+            DisplayName = "Attack2",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://82400997593751"] = {
+            DisplayName = "Attack3",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://118634493886688"] = {
+            DisplayName = "Attack4",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://86362077638309"] = {
+            DisplayName = "Attack4",
+            ParryTime = 0.08
+        },
+        86362077638309
+        ["rbxassetid://89652378115594"] = {
+            DisplayName = "BForce",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://76519264603956"] = {
+            DisplayName = "Pebble",
+            ParryTime = 0.08,
+            HoldBlockDuration = 1
+        },
+        ["rbxassetid://121343824534765"] = {
+            DisplayName = "EDrop",
+            ParryTime = 0.08,
+            HoldBlockDuration = 1
+        },
+        ["M1Time"] = 0.09
+    },
+
 
 
 
@@ -345,8 +389,10 @@ local GameConfig = {
 }
 
 local IgnoreIds = {
-    120133391090244, 96489184596023, 117941450906936, 77705898607209, 134343219970072, 126572575938378, 97446412066176, 138196552148011, 82881042739459,
-    140491244934559, 134581973800784, 117223862448096, 75203303352791, 72509133503569, 81112033595734, 100532748201417, 127843796051633, 17579003479
+    120133391090244, 96489184596023, 117941450906936, 77705898607209, 126572575938378, 138196552148011, 82881042739459,
+    140491244934559, 134581973800784, 117223862448096, 75203303352791, 72509133503569, 81112033595734, 100532748201417, 127843796051633, 
+    17579003479, 134343219970072, 135750035707554, 77992084875736
+    
 }
 
 
@@ -787,6 +833,13 @@ local function CreateGroupSliders()
             if Info.HoldDuration ~= nil then
                 StyleSection:Slider("Hold Duration: " .. combinedLabel, Info.HoldDuration, 0.1, 0, 30, "s", function(v)
                     Info.HoldDuration = v > 0 and v or nil
+                end)
+            end
+
+            -- Only creates the Air Parry slider if the property is already defined in the config
+            if Info.AirParryTime ~= nil then
+                StyleSection:Slider("Air Parry Time: " .. combinedLabel, Info.AirParryTime, 0.01, 0, 5, "s", function(v)
+                    Info.AirParryTime = v
                 end)
             end
 
@@ -1591,62 +1644,28 @@ local function UpdateCharacterESP(character, Distance)
     end
 end
 
-local function IsCharacterJumping(character)
-    local activeAnims = AnimationTracker:Update(character) or {}
-    for _, anim in ipairs(activeAnims) do
-        if anim.AnimationId then
-            local idStr = tostring(anim.AnimationId)
-            -- This extracts just the digits from the ID string, matching the number safely either way
-            local numericId = idStr:match("%d+")
-            if numericId == "134343219970072" then 
-                return true
-            end
-        end
-    end
-    return false
-end
 
--- Update your CalculateParryTiming function to support aerial parry timings
-local function CalculateParryTiming(attackConfig, StartTime, isAirborne)
-    local optimalReactionTime
-    if isAirborne and attackConfig.AirParryTime then
-        optimalReactionTime = attackConfig.AirParryTime
-    elseif isAirborne and attackConfig.JumpParryTime then
-        optimalReactionTime = attackConfig.JumpParryTime
-    else
-        optimalReactionTime = attackConfig.ParryTime or (attackConfig.ReactionTime or DefaultReactionTime)
-    end
-    
-    local adjustedReactionTime = optimalReactionTime + ParryOffset
-    
+
+function CalculateParryTiming(attackConfig, startTime, isAirborne)
     local windows = {}
     
+    -- Pick the correct timing: use AirParryTime if airborne and available, otherwise standard ParryTime/ReactionTime
+    local parryTime = (isAirborne and attackConfig.AirParryTime) or attackConfig.ParryTime or attackConfig.ReactionTime or DefaultReactionTime
+    
+    -- If your config uses HitTimes (table of multiple hits)
     if attackConfig.HitTimes and type(attackConfig.HitTimes) == "table" then
-        for _, hitOffset in ipairs(attackConfig.HitTimes) do
-            local hitStart = StartTime + hitOffset + ParryOffset
+        for _, hitDelay in ipairs(attackConfig.HitTimes) do
             table.insert(windows, {
-                Start = hitStart,
-                Expire = hitStart + ParryWindow,
+                Start = startTime + hitDelay,
                 Parried = false
             })
         end
     else
-        local parryWindowStart = adjustedReactionTime
-        local parryWindowEnd = adjustedReactionTime + ParryWindow
-        
-        if attackConfig.SpamAfterHits then
-            table.insert(windows, {
-                Start = StartTime + parryWindowStart,
-                Expire = StartTime + parryWindowEnd + (attackConfig.HoldDuration or 0.3),
-                Parried = false
-            })
-        else
-            table.insert(windows, {
-                Start = StartTime + parryWindowStart,
-                Expire = StartTime + parryWindowEnd,
-                Parried = false
-            })
-        end
+        -- Standard single hit window calculation
+        table.insert(windows, {
+            Start = startTime + parryTime,
+            Parried = false
+        })
     end
     
     return windows
@@ -1738,17 +1757,14 @@ local function EvaluateAnimation(anim, character, localCharacter, localRoot, tar
     local animKey = anim.Address or anim
     currentActiveIds[animKey] = true
     
-    -- CHECK JUMP / AIRBORNE STATE VIA ANIMATION
-    local isAirborne = IsCharacterJumping(character)
-    
     -- ANIMATION REGISTRY & STATE
     local now = os.clock()
     
-    -- Custom registry update supporting airborne timing
+    -- Custom registry update
     local regData = AnimationRegistry[animKey]
     if not regData then
         local adjustedNow = now - (anim.TimePosition or 0)
-        local windows = CalculateParryTiming(attackConfig, adjustedNow, isAirborne)
+        local windows = CalculateParryTiming(attackConfig, adjustedNow)
 
         AnimationRegistry[animKey] = {
             StartTime = adjustedNow,
@@ -1759,7 +1775,6 @@ local function EvaluateAnimation(anim, character, localCharacter, localRoot, tar
             AnimationId = anim.AnimationId,
             Windows = windows,
             RandomNum = math.random(1, 100),
-            IsAirborne = isAirborne,
         }
         regData = AnimationRegistry[animKey]
     else
@@ -1805,8 +1820,11 @@ local function EvaluateAnimation(anim, character, localCharacter, localRoot, tar
             window.Parried = true
             LastPendingRegData = regData
             
-            -- Check if this specific attack should dodge instead
-            if attackConfig.UseDodge then
+            -- Check if modifier keys (Z or X) are held down
+            local isModifierHeld = iskeypressed(0x5A) or iskeypressed(0x58)
+            
+            -- Check if this specific attack should dodge instead (ignored if holding a modifier)
+            if attackConfig.UseDodge and not isModifierHeld then
                 Dodge()
             -- Check if spamming/holding is enabled for this attack
             elseif attackConfig.SpamAfterHits then
