@@ -104,15 +104,18 @@ local GameConfig = {
         ["rbxassetid://77200218033775"] = {
             DisplayName = "Strikes",
             ParryTime = 0.34,
-            HoldBlockDuration = 0.8
+            HoldBlockDuration = 0.8,
+            AirParryTime = 0.5
         },
         ["rbxassetid://124901309160375"] = {
             DisplayName = "CBlow",
-            ParryTime = 0.35
+            ParryTime = 0.35,
+            AirParryTime = 0.5
         },
         ["rbxassetid://100962226150441"] = {
             DisplayName = "DFist",
-            ParryTime = 0.3
+            ParryTime = 0.3,
+            
         },
         ["M1Time"] = 0.09
     },
@@ -1085,6 +1088,12 @@ end
 local ParryKey = string.byte("F")
 local DodgeKey = string.byte("Q")
 
+local ModifierKey1 = Enum.KeyCode.Z
+local AlternativeParryKey1 = string.byte("3")
+
+local ModifierKey2 = Enum.KeyCode.X
+local AlternativeParryKey2 = string.byte("g")
+
 local KeyHeld = false
 local TriggerParry = false
 
@@ -1195,33 +1204,32 @@ function BlockStart(StartTime, HoldFor)
         return
     end
 
-
     local HoldFor = HoldFor or BlockHoldTime
     ReleaseDeadline = StartTime + HoldFor   
-
-    --print(now, duration, "attempted block", holdTime and holdTime - now)
 
     KeyHeld = true
     
     if AutoParryToggle.Get() == true then
         if ismouse1pressed() then mouse2click() end 
-        keypress(ParryKey)       
         
-      --  task.spawn(function()
-          --  for i = 1, 60, 1 do
-             --   keypress(ParryKey)       
-             --   task.wait()            
-           -- end
-       -- end)
+        -- Using Matcha's iskeypressed() with virtual key codes (0x5A = Z, 0x58 = X)
+        if iskeypressed(0x5A) then
+            keypress(0x33) -- Presses '3' when holding Z
+        elseif iskeypressed(0x58) then
+            keypress(0x47) -- Presses 'G' when holding X
+        else
+            keypress(0x46) -- Presses 'F' normally
+        end
     end
 end
 
 function BlockEnd()
     KeyHeld = false
---    ResetParryState()
     
     if AutoParryToggle.Get() == true then 
-        keyrelease(ParryKey) 
+        keyrelease(0x46) 
+        keyrelease(0x33)
+        keyrelease(0x47)
     end 
 end
 
@@ -1583,8 +1591,32 @@ local function UpdateCharacterESP(character, Distance)
     end
 end
 
-local function CalculateParryTiming(attackConfig, StartTime)
-    local optimalReactionTime = attackConfig.ParryTime or (attackConfig.ReactionTime or DefaultReactionTime)
+local function IsCharacterJumping(character)
+    local activeAnims = AnimationTracker:Update(character) or {}
+    for _, anim in ipairs(activeAnims) do
+        if anim.AnimationId then
+            local idStr = tostring(anim.AnimationId)
+            -- This extracts just the digits from the ID string, matching the number safely either way
+            local numericId = idStr:match("%d+")
+            if numericId == "134343219970072" then 
+                return true
+            end
+        end
+    end
+    return false
+end
+
+-- Update your CalculateParryTiming function to support aerial parry timings
+local function CalculateParryTiming(attackConfig, StartTime, isAirborne)
+    local optimalReactionTime
+    if isAirborne and attackConfig.AirParryTime then
+        optimalReactionTime = attackConfig.AirParryTime
+    elseif isAirborne and attackConfig.JumpParryTime then
+        optimalReactionTime = attackConfig.JumpParryTime
+    else
+        optimalReactionTime = attackConfig.ParryTime or (attackConfig.ReactionTime or DefaultReactionTime)
+    end
+    
     local adjustedReactionTime = optimalReactionTime + ParryOffset
     
     local windows = {}
@@ -1602,8 +1634,6 @@ local function CalculateParryTiming(attackConfig, StartTime)
         local parryWindowStart = adjustedReactionTime
         local parryWindowEnd = adjustedReactionTime + ParryWindow
         
-        -- If SpamAfterHits is enabled on a single-hit/ParryTime move, 
-        -- we can split it or treat it as a multi-window structure
         if attackConfig.SpamAfterHits then
             table.insert(windows, {
                 Start = StartTime + parryWindowStart,
@@ -1668,10 +1698,13 @@ end
 local function ExecuteParry(regData, attackConfig)
     local isHeavy = attackConfig.DisplayName == "M2" or attackConfig.DisplayName == "Heavy" or attackConfig.Heavy
 
-    -- Force dodge if UseDodge is true or if it's a heavy attack with auto-dodge enabled
-    local isDodgeEnabled = type(AutoDodgeToggle) == "boolean" and AutoDodgeToggle 
+    -- Check if either Z or X is currently held down
+    local isModifierHeld = UserInputService:IsKeyDown(ModifierKey1) or UserInputService:IsKeyDown(ModifierKey2)
+
+    -- Force dodge to be disabled if either Z or X is held
+    local isDodgeEnabled = (type(AutoDodgeToggle) == "boolean" and AutoDodgeToggle 
         or (type(AutoDodgeToggle) == "table" and (AutoDodgeToggle.Value or AutoDodgeToggle.Enabled or AutoDodgeToggle.Get and AutoDodgeToggle.Get()))
-        or true
+        or true) and not isModifierHeld
 
     if attackConfig.UseDodge or (isHeavy and isDodgeEnabled) then
         Dodge()            
@@ -1683,7 +1716,7 @@ local function ExecuteParry(regData, attackConfig)
             LastPendingRegData = regData
         end
     else 
-        -- Standard block/parry fallback
+        -- Standard block fallback (uses '3' or 'g' depending on which modifier key you are holding)
         if LastPendingRegData ~= regData then
             LastPendingRegData = regData
             BlockStart(window.Start)
@@ -1705,9 +1738,35 @@ local function EvaluateAnimation(anim, character, localCharacter, localRoot, tar
     local animKey = anim.Address or anim
     currentActiveIds[animKey] = true
     
+    -- CHECK JUMP / AIRBORNE STATE VIA ANIMATION
+    local isAirborne = IsCharacterJumping(character)
+    
     -- ANIMATION REGISTRY & STATE
     local now = os.clock()
-    local regData = UpdateAnimationRegistry(animKey, anim, now, anim.TimePosition or 0, attackConfig)
+    
+    -- Custom registry update supporting airborne timing
+    local regData = AnimationRegistry[animKey]
+    if not regData then
+        local adjustedNow = now - (anim.TimePosition or 0)
+        local windows = CalculateParryTiming(attackConfig, adjustedNow, isAirborne)
+
+        AnimationRegistry[animKey] = {
+            StartTime = adjustedNow,
+            Processed = false,
+            CurrentClockTime = os.clock(),
+            CurrentTrackTime = anim.TimePosition or 0,
+            ReactionTime = attackConfig,
+            AnimationId = anim.AnimationId,
+            Windows = windows,
+            RandomNum = math.random(1, 100),
+            IsAirborne = isAirborne,
+        }
+        regData = AnimationRegistry[animKey]
+    else
+        regData.CurrentClockTime = os.clock()
+        regData.CurrentTrackTime = anim.TimePosition or 0
+    end
+
     if regData.Processed then return end
     
     -- PARRY FUNCTION OVERRIDE
