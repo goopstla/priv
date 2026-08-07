@@ -107,12 +107,8 @@ local GameConfig = {
             DisplayName = "Attack_1",
             ParryTime = 1.1
         },
-        ["rbxassetid://111315433866615"] = {
-            DisplayName = "Attack_2",
-            ParryTime = 1
-        },
         ["rbxassetid://73892588059812"] = {
-            DisplayName = "Attack_3",
+            DisplayName = "Attack_2",
             HitTimes = {1.2, 2}
         },      
         ["M1Time"] = 1
@@ -1383,8 +1379,18 @@ local function UpdateAnimationRegistry(animKey, anim, now, currentTrackTime, att
     return regData
 end
 
-local function CheckAnimationDirection(character, localCharacter, localRoot, targetRoot, attackConfig)
+local function CheckAnimationDirection(character, localCharacter, localRoot, targetRoot, attackConfig, distance)
     if character.Address == localCharacter.Address then return true end
+    
+    -- If both toggles are turned on, bypass/ignore direction checks completely
+    if TargetFacingYou.Get() and YouFacingTarget.Get() then
+        return true
+    end
+    
+    -- Bypasses direction requirements if they are within your current AutoParryRange
+    if distance <= AutoParryRange then
+        return true
+    end
     
     local direction = (targetRoot.Position - localRoot.Position).Unit
     local isHeavy = attackConfig.DisplayName == "M2" or attackConfig.DisplayName == "Heavy" or attackConfig.Heavy
@@ -1467,11 +1473,16 @@ local function EvaluateAnimation(anim, character, localCharacter, localRoot, tar
         return
     end
     
-    -- DIRECTION CHECKS (Bypassed entirely if both target-facing and local-facing options are enabled)
-    local bypassDirections = (TargetFacingToggle and TargetFacingToggle.Get() == true) and (LocalFacingToggle and LocalFacingToggle.Get() == true)
-    
-    if not bypassDirections then
-        if not CheckAnimationDirection(character, localCharacter, localRoot, targetRoot, attackConfig) then return end
+    -- RANGE & DISTANCE CHECK
+    if localRoot and targetRoot then
+        local distance = (targetRoot.Position - localRoot.Position).Magnitude
+        local maxRange = attackConfig.MaxRange or AutoParryRange or 20
+        if distance > maxRange then
+            return
+        end
+        
+        -- DIRECTION CHECKS (Bypasses if close)
+        if not CheckAnimationDirection(character, localCharacter, localRoot, targetRoot, attackConfig, distance) then return end
     end
     
     if regData.RandomNum > ProbabilityToParry then
