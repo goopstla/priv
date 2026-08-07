@@ -41,13 +41,53 @@ local GameName = "Jujutsu Shenanigans"
 local GameConfig = {
 
     ["Basic"] = {
-
         ["rbxassetid://92966188946988"] = {
             DisplayName = "Downslam",
-            ParryTime = 0.09
+            ParryTime = 0.1
+        },
+        ["rbxassetid://110978068388232"] = {
+            DisplayName = "Dash",
+            ParryTime = 0.45
         },
         ["M1Time"] = 0.09
     },
+
+    ["Naginata"] = {
+        ["rbxassetid://95981277479213"] = {
+            DisplayName = "Downslam",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://134438232117051"] = {
+            DisplayName = "Dash",
+            ParryTime = 0.8
+        },
+        ["rbxassetid://83712266760883"] = {
+            DisplayName = "Dash",
+            ParryTime = 0.08
+        },
+        ["M1Time"] = 0.09
+    },
+
+    ["PCloud"] = {
+        ["rbxassetid://80756404350408"] = {
+            DisplayName = "Downslam",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://90174267990582"] = {
+            DisplayName = "Dash",
+            ParryTime = 0.8
+        },
+        ["rbxassetid://97257863853708"] = {
+            DisplayName = "Dash",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://106861173292802"] = {
+            DisplayName = "Dash",
+            ParryTime = 0.08
+        },
+        ["M1Time"] = 0.09
+    },
+
 
     ["Gojo"] = {
         ["rbxassetid://127851700400958"] = {
@@ -120,7 +160,43 @@ local GameConfig = {
         ["rbxassetid://100962226150441"] = {
             DisplayName = "DFist",
             ParryTime = 0.3,
-            
+        },
+        ["rbxassetid://130206074036010"] = {
+            DisplayName = "Throw",
+            ParryTime = 0.1,
+        },
+        ["M1Time"] = 0.09
+    },
+
+    ["Sukuna"] = {
+        ["rbxassetid://110146909061402"] = {
+            DisplayName = "Attack1",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://123414935051274"] = {
+            DisplayName = "Attack2",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://108636011034323"] = {
+            DisplayName = "Attack3",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://105376952884290"] = {
+            DisplayName = "Attack4",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://131506102901134"] = {
+            DisplayName = "Dismantle",
+            ParryTime = 0.15,
+            HoldBlockDuration = 0.8,
+        },
+        ["rbxassetid://137611726964398"] = {
+            DisplayName = "Open",
+            ParryTime = 3.6,
+        },
+        ["rbxassetid://107554693613496"] = {
+            DisplayName = "Rush",
+            ParryTime = 2,
         },
         ["M1Time"] = 0.09
     },
@@ -159,8 +235,32 @@ local GameConfig = {
             DisplayName = "FBreaker",
             ParryTime = 0.35
         },
+        ["rbxassetid://99451940496871"] = {
+            DisplayName = "Dash",
+            ParryTime = 0.45
+        },
         ["M1Time"] = 0.1
     },
+    ["AHakari"] = {
+        ["rbxassetid://95901746347992"] = {
+            DisplayName = "Volley",
+            ParryTime = 0.05
+        },
+        ["rbxassetid://132281807148575"] = {
+            DisplayName = "Rushdown",
+            ParryTime = 0.5
+        },
+        ["rbxassetid://120480195428173"] = {
+            DisplayName = "OLuck",
+            ParryTime = 1.6
+        },
+        ["rbxassetid://91984445049000"] = {
+            DisplayName = "Surge",
+            ParryTime = 0.6
+        },
+        ["M1Time"] = 0.1
+    },
+
     ["Megumi"] = {
         ["rbxassetid://75337033003776"] = {
             DisplayName = "Attack1",
@@ -272,11 +372,11 @@ local GameConfig = {
         },
         ["rbxassetid://89092734635186"] = {
             DisplayName = "SFire",
-            ParryTime = 0.09
+            ParryTime = 0.4
         },
         ["rbxassetid://72475960800126"] = {
             DisplayName = "FStrike",
-            ParryTime = 0.09
+            ParryTime = 0.32
         },
         ["rbxassetid://108319980293313"] = {
             DisplayName = "BRepel",
@@ -287,7 +387,17 @@ local GameConfig = {
             ParryTime = 0.09
         },
     },
-    
+
+    ["AMahito"] = {
+        ["rbxassetid://123690534435200"] = {
+            DisplayName = "Transfiguration",
+            ParryTime = 0.84
+        },
+        ["rbxassetid://128779949980528"] = {
+            DisplayName = "Disfigure",
+            ParryTime = 0.65
+        },
+    },
     ["Choso"] = {
         ["rbxassetid://119042572747325"] = {
             DisplayName = "Attack1",
@@ -301,10 +411,30 @@ local GameConfig = {
             DisplayName = "FRScale",
             ParryTime = 0.08
         },
+        ["rbxassetid://87805684702890"] = {
+            DisplayName = "AerialScale",
+            ParryTime = 0.08
+        },
         ["rbxassetid://100446064103831"] = {
             DisplayName = "BEdge",
             ParryTime = 0.08,
             UseDodge = true
+        },
+        ["M1Time"] = 0.09
+    },
+
+    ["AChoso"] = {
+        ["rbxassetid://114321791577837"] = {
+            DisplayName = "Exorcism",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://95097480425566"] = {
+            DisplayName = "WingKing",
+            ParryTime = 0.08
+        },
+        ["rbxassetid://107067953428369"] = {
+            DisplayName = "PlasmaWave",
+            ParryTime = 0.08
         },
         ["M1Time"] = 0.09
     },
@@ -364,41 +494,38 @@ local GameConfig = {
             DisplayName = "Attack4",
             ParryTime = 0.08
         },
-        86362077638309
         ["rbxassetid://89652378115594"] = {
             DisplayName = "BForce",
             ParryTime = 0.08
         },
         ["rbxassetid://76519264603956"] = {
-            DisplayName = "Pebble",
+            DisplayName = "Hammer",
             ParryTime = 0.08,
             HoldBlockDuration = 1
         },
-        ["rbxassetid://121343824534765"] = {
-            DisplayName = "EDrop",
+        ["rbxassetid://135411487367370"] = {
+            DisplayName = "PCharges",
             ParryTime = 0.08,
             HoldBlockDuration = 1
         },
         ["M1Time"] = 0.09
     },
 
-
-
-
-    
 }
 
 local IgnoreIds = {
     120133391090244, 96489184596023, 117941450906936, 77705898607209, 126572575938378, 138196552148011, 82881042739459,
-    140491244934559, 134581973800784, 117223862448096, 75203303352791, 72509133503569, 81112033595734, 100532748201417, 127843796051633, 
-    17579003479, 134343219970072, 135750035707554, 77992084875736
+    140491244934559, 134581973800784, 117223862448096, 75203303352791, 72509133503569, 81112033595734, 100532748201417, 
+    17579003479, 134343219970072, 135750035707554, 77992084875736, 97446412066176, 124982438761606, 112519964343154, 
+    103513893010999,85003123457049,111214152450580,140381676724931,89962806326079, 88667890398061, 136305962980209,
+    132899979708597, 127843796051633, 124482056102727, 80852442092385, 127727754867974, 105826208784475,
+
     
 }
 
 
 local ParriedAnimation = {
-"rbxassetid://140381676724931", "rbxassetid://103513893010999", "rbxassetid://85003123457049", "rbxassetid://111214152450580", 
-"rbxassetid://103513893010999", "rbxassetid://103513893010999", "rbxassetid://103513893010999", "rbxassetid://103513893010999",
+"rbxassetid://112519964343154", "rbxassetid://103513893010999", "rbxassetid://85003123457049", "rbxassetid://111214152450580", "rbxassetid://140381676724931"
 }
 
 
