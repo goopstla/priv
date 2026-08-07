@@ -295,7 +295,7 @@ local GameConfig = {
         },
         ["rbxassetid://100446064103831"] = {
             DisplayName = "BEdge",
-            ParryTime = 0.08
+            ParryTime = 0.08,
             UseDodge = true
         },
         ["M1Time"] = 0.09
@@ -324,12 +324,12 @@ local GameConfig = {
         },
         ["rbxassetid://111720035828971"] = {
             DisplayName = "Pebble",
-            ParryTime = 0.08
+            ParryTime = 0.08,
             HoldBlockDuration = 1
         },
         ["rbxassetid://121343824534765"] = {
             DisplayName = "EDrop",
-            ParryTime = 0.08
+            ParryTime = 0.08,
             HoldBlockDuration = 1
         },
         
@@ -1824,11 +1824,6 @@ local function ProcessEspAndLogging()
         local character = TargetCharacters[i]
         
         -- Prevent processing local character entirely
-        if character == LocalPlayer.Character then
-            table.remove(TargetCharacters, i)
-            continue
-        end
-
         local tracker = EspTrackers[character]
         
         if tracker and not tracker.ChangeText then 
