@@ -92,7 +92,7 @@ local GameConfig = {
     ["Gojo"] = {
         ["rbxassetid://127851700400958"] = {
             DisplayName = "Attack1",
-            ParryTime = 0.08
+            ParryTime = 0.12
         },
         ["rbxassetid://72548435296350"] = {
             DisplayName = "Attack2",
@@ -264,27 +264,38 @@ local GameConfig = {
     ["Megumi"] = {
         ["rbxassetid://75337033003776"] = {
             DisplayName = "Attack1",
-            ParryTime = 0.09
+            ParryTime = 0.12
         },
         ["rbxassetid://138489871864252"] = {
             DisplayName = "Attack2",
-            ParryTime = 0.09
+            ParryTime = 0.12
         },
         ["rbxassetid://96185406489877"] = {
             DisplayName = "Attack3",
-            ParryTime = 0.09
+            ParryTime = 0.12
         },
         ["rbxassetid://105287938257399"] = {
             DisplayName = "Attack4",
-            ParryTime = 0.09
+            ParryTime = 0.12 
         },
         ["rbxassetid://132653290201368"] = {
             DisplayName = "Rabbits",
-            ParryTime = 0.09
+            ParryTime = 0.7
         },
         ["rbxassetid://116432619539029"] = {
             DisplayName = "Toad",
-            ParryTime = 0.09
+            ParryTime = 1.03
+        },
+    },
+
+    ["AMegumi"] = {
+        ["rbxassetid://75390215999547"] = {
+            DisplayName = "GSerpent",
+            ParryTime = 1
+        },
+        ["rbxassetid://72424828296871"] = {
+            DisplayName = "SSwarm",
+            ParryTime = 0.8
         },
     },
     ["BigRaga"] = {
@@ -316,7 +327,7 @@ local GameConfig = {
     ["Mahito"] = {
         ["rbxassetid://126277739156443"] = {
             DisplayName = "Attack1",
-            ParryTime = 0.09
+            ParryTime = 0.1
         },
         ["rbxassetid://99710481887795"] = {
             DisplayName = "Attack2",
@@ -398,6 +409,40 @@ local GameConfig = {
             ParryTime = 0.65
         },
     },
+
+    ["ISBDMahito"] = {
+        ["rbxassetid://125455197945793"] = {
+            DisplayName = "ATransfiguration",
+            ParryTime = 1.1
+        },
+        ["rbxassetid://71784337627181"] = {
+            DisplayName = "Attack1",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://125120382787311"] = {
+            DisplayName = "Attack2",
+            ParryTime = 0.1
+        },
+        ["rbxassetid://130013701390383"] = {
+            DisplayName = "Dash",
+            ParryTime = 0.42
+        },
+        ["rbxassetid://76313364850487"] = {
+            DisplayName = "WStrikes",
+            ParryTime = 3
+        },
+        ["rbxassetid://105068005007692"] = {
+            DisplayName = "FBlitz",
+            ParryTime = 0.6
+        },
+        ["rbxassetid://89888040037257"] = {
+            DisplayName = "CRushdown",
+            ParryTime = 0.2
+        },
+        
+        
+        
+    },
     ["Choso"] = {
         ["rbxassetid://119042572747325"] = {
             DisplayName = "Attack1",
@@ -409,7 +454,7 @@ local GameConfig = {
         },
         ["rbxassetid://84039122607068"] = {
             DisplayName = "FRScale",
-            ParryTime = 0.08
+            ParryTime = 0.22
         },
         ["rbxassetid://87805684702890"] = {
             DisplayName = "AerialScale",
@@ -442,15 +487,15 @@ local GameConfig = {
     ["Todo"] = {
         ["rbxassetid://96327114254575"] = {
             DisplayName = "Attack1",
-            ParryTime = 0.08
+            ParryTime = 0.12
         },
         ["rbxassetid://107029561762376"] = {
             DisplayName = "Attack2",
-            ParryTime = 0.08
+            ParryTime = 0.12
         },
         ["rbxassetid://117831239064143"] = {
             DisplayName = "Attack3",
-            ParryTime = 0.08
+            ParryTime = 0.12
         },
         ["rbxassetid://94720627091769"] = {
             DisplayName = "SKick",
@@ -462,41 +507,61 @@ local GameConfig = {
         },
         ["rbxassetid://111720035828971"] = {
             DisplayName = "Pebble",
-            ParryTime = 0.08,
+            ParryTime = 0.5,
             HoldBlockDuration = 1
         },
         ["rbxassetid://121343824534765"] = {
             DisplayName = "EDrop",
-            ParryTime = 0.08,
+            ParryTime = 0.3,
             HoldBlockDuration = 1
         },
-        ["M1Time"] = 0.09
+        ["M1Time"] = 0.12
     },
+
+    ["ATodo"] = {
+        ["rbxassetid://121572833341748"] = {
+            DisplayName = "Debut",
+            ParryTime = 0.3
+        },
+        ["rbxassetid://84448423136678"] = {
+            DisplayName = "Jump",
+            ParryTime = 0.12
+        },
+        ["rbxassetid://89677028738408"] = {
+            DisplayName = "Dreams",
+            ParryTime = 0.12
+        },
+
+        ["M1Time"] = 0.12
+    },
+
 
     ["Higuruma"] = {
         ["rbxassetid://133936641185614"] = {
             DisplayName = "Attack1",
-            ParryTime = 0.08
+            ParryTime = 0.12
         },
         ["rbxassetid://122573730331631"] = {
             DisplayName = "Attack2",
-            ParryTime = 0.08
+            ParryTime = 0.12,
+            HoldBlockDuration = 0.25
         },
         ["rbxassetid://82400997593751"] = {
             DisplayName = "Attack3",
-            ParryTime = 0.08
+            ParryTime = 0.21
         },
         ["rbxassetid://118634493886688"] = {
             DisplayName = "Attack4",
-            ParryTime = 0.08
+            ParryTime = 0.12
         },
         ["rbxassetid://86362077638309"] = {
-            DisplayName = "Attack4",
-            ParryTime = 0.08
+            DisplayName = "Throw",
+            ParryTime = 0.12,
+            HoldBlockDuration = 0.5
         },
         ["rbxassetid://89652378115594"] = {
-            DisplayName = "BForce",
-            ParryTime = 0.08
+            DisplayName = "ESwings",
+            HitTimes = {0.25, 0.25, 0.25}
         },
         ["rbxassetid://76519264603956"] = {
             DisplayName = "Hammer",
@@ -518,7 +583,8 @@ local IgnoreIds = {
     140491244934559, 134581973800784, 117223862448096, 75203303352791, 72509133503569, 81112033595734, 100532748201417, 
     17579003479, 134343219970072, 135750035707554, 77992084875736, 97446412066176, 124982438761606, 112519964343154, 
     103513893010999,85003123457049,111214152450580,140381676724931,89962806326079, 88667890398061, 136305962980209,
-    132899979708597, 127843796051633, 124482056102727, 80852442092385, 127727754867974, 105826208784475,
+    132899979708597, 127843796051633, 124482056102727, 80852442092385, 127727754867974, 105826208784475, 85012092465916,
+    74442134184452, 131219281339199, 131358603583212
 
     
 }
@@ -1371,7 +1437,11 @@ function BlockStart(StartTime, HoldFor)
         return
     end
 
-    if ParryRegisteredTime then  
+    -- Check if this specific animation is a multi-hit move
+    local isMultiHit = LastPendingRegData and LastPendingRegData.Windows and #LastPendingRegData.Windows > 1
+
+    -- Only enforce the 0.8s cooldown if it's NOT a multi-hit move
+    if ParryRegisteredTime and not isMultiHit then  
        local TimeBetweenLastParry = os.clock() - ParryRegisteredTime
          if TimeBetweenLastParry < 0.8 then  
              print("parry is gonna be on cooldown")
@@ -1379,7 +1449,7 @@ function BlockStart(StartTime, HoldFor)
          end 
     end
 
-    if CurrentParryState ~= ParryState.IDLE then  
+    if CurrentParryState ~= ParryState.IDLE and not isMultiHit then  
         warn("tried to press in a non idle state")
         return
     end
@@ -1392,25 +1462,14 @@ function BlockStart(StartTime, HoldFor)
     if AutoParryToggle.Get() == true then
         if ismouse1pressed() then mouse2click() end 
         
-        -- Using Matcha's iskeypressed() with virtual key codes (0x5A = Z, 0x58 = X)
         if iskeypressed(0x5A) then
-            keypress(0x33) -- Presses '3' when holding Z
+            keypress(0x33) 
         elseif iskeypressed(0x58) then
-            keypress(0x47) -- Presses 'G' when holding X
+            keypress(0x47) 
         else
-            keypress(0x46) -- Presses 'F' normally
+            keypress(0x46) 
         end
     end
-end
-
-function BlockEnd()
-    KeyHeld = false
-    
-    if AutoParryToggle.Get() == true then 
-        keyrelease(0x46) 
-        keyrelease(0x33)
-        keyrelease(0x47)
-    end 
 end
 
 
@@ -1773,22 +1832,21 @@ end
 
 
 
-function CalculateParryTiming(attackConfig, startTime, isAirborne)
+function CalculateParryTiming(attackConfig, startTime)
     local windows = {}
     
-    -- Pick the correct timing: use AirParryTime if airborne and available, otherwise standard ParryTime/ReactionTime
-    local parryTime = (isAirborne and attackConfig.AirParryTime) or attackConfig.ParryTime or attackConfig.ReactionTime or DefaultReactionTime
-    
-    -- If your config uses HitTimes (table of multiple hits)
     if attackConfig.HitTimes and type(attackConfig.HitTimes) == "table" then
+        local accumulatedTime = startTime
         for _, hitDelay in ipairs(attackConfig.HitTimes) do
+            -- Adds each hit delay on top of the previous hit's timestamp
+            accumulatedTime = accumulatedTime + hitDelay
             table.insert(windows, {
-                Start = startTime + hitDelay,
+                Start = accumulatedTime,
                 Parried = false
             })
         end
     else
-        -- Standard single hit window calculation
+        local parryTime = attackConfig.ParryTime or attackConfig.ReactionTime or DefaultReactionTime
         table.insert(windows, {
             Start = startTime + parryTime,
             Parried = false
@@ -1953,7 +2011,6 @@ local function EvaluateAnimation(anim, character, localCharacter, localRoot, tar
             -- Check if this specific attack should dodge instead (ignored if holding a modifier)
             if attackConfig.UseDodge and not isModifierHeld then
                 Dodge()
-            -- Check if spamming/holding is enabled for this attack
             elseif attackConfig.SpamAfterHits then
                 task.spawn(function()
                     local endTime = os.clock() + (attackConfig.HoldDuration or 0.3)
@@ -1968,7 +2025,7 @@ local function EvaluateAnimation(anim, character, localCharacter, localRoot, tar
                     keyrelease(ParryKey)
                 end)
             else
-                BlockStart(window.Start)
+                BlockStart(window.Start, attackConfig.HoldBlockDuration)
             end
             break
         end
